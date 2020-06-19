@@ -10,8 +10,8 @@
     "eject": "node node_modules/expo/bin/cli.js eject"
   },
   "dependencies": {
-    "@cuba-platform/react-core": "file:../packages/cuba-react-core/cuba-platform-react-core-1.0.0-beta.2.tgz",
-    "@cuba-platform/rest": "file:../packages/cuba-rest-js/cuba-platform-rest-1.0.0-beta.2.tgz",
+    "@cuba-platform/react-core": "file:../packages/cuba-react-core/cuba-platform-react-core-1.0.1.tgz",
+    "@cuba-platform/rest": "file:../packages/cuba-rest-js/cuba-platform-rest-1.0.0.tgz",
     "@react-native-community/async-storage": "^1.7.1",
     "base-64": "^0.1.0",
     "expo": "~36.0.0",
