@@ -62,7 +62,7 @@ class CompositionO2MEditComponent extends React.Component<
   @observable formRef: React.RefObject<Form> = React.createRef();
   reactionDisposers: IReactionDisposer[] = [];
 
-  fields = ["name", "datatypesTestEntity"];
+  fields = ["quantity", "name", "datatypesTestEntity"];
 
   @observable globalErrors: string[] = [];
 
@@ -162,6 +162,14 @@ class CompositionO2MEditComponent extends React.Component<
     return (
       <Card className="narrow-layout">
         <Form onSubmit={this.handleSubmit} layout="vertical" ref={this.formRef}>
+          <Field
+            entityName={CompositionO2MTestEntity.NAME}
+            propertyName="quantity"
+            form={this.props.form}
+            formItemOpts={{ style: { marginBottom: "12px" } }}
+            getFieldDecoratorOpts={{}}
+          />
+
           <Field
             entityName={CompositionO2MTestEntity.NAME}
             propertyName="name"
