@@ -67,8 +67,7 @@ class DatatypesBrowse2Component extends React.Component<Props> {
     "compositionO2Oattr",
     "intIdentityIdTestEntityAssociationO2OAttr",
     "stringIdTestEntityAssociationO2O",
-    "stringIdTestEntityAssociationM2O",
-    "readOnlyStringAttr"
+    "stringIdTestEntityAssociationM2O"
   ];
 
   componentDidMount(): void {

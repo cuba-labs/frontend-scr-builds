@@ -3,7 +3,6 @@ import { DeeplyNestedTestEntity } from "./scr_DeeplyNestedTestEntity";
 export class CompositionO2OTestEntity extends StandardEntity {
   static NAME = "scr_CompositionO2OTestEntity";
   name?: string | null;
-  quantity?: number | null;
   nestedComposition?: DeeplyNestedTestEntity | null;
 }
 export type CompositionO2OTestEntityViewName =
@@ -14,14 +13,11 @@ export type CompositionO2OTestEntityViewName =
 export type CompositionO2OTestEntityView<
   V extends CompositionO2OTestEntityViewName
 > = V extends "_base"
-  ? Pick<CompositionO2OTestEntity, "id" | "name" | "quantity">
+  ? Pick<CompositionO2OTestEntity, "id" | "name">
   : V extends "_local"
-  ? Pick<CompositionO2OTestEntity, "id" | "name" | "quantity">
+  ? Pick<CompositionO2OTestEntity, "id" | "name">
   : V extends "_minimal"
   ? Pick<CompositionO2OTestEntity, "id" | "name">
   : V extends "compositionO2OTestEntity-view"
-  ? Pick<
-      CompositionO2OTestEntity,
-      "id" | "name" | "quantity" | "nestedComposition"
-    >
+  ? Pick<CompositionO2OTestEntity, "id" | "name" | "nestedComposition">
   : never;

@@ -54,8 +54,7 @@ class DatatypesBrowse3Component extends React.Component<
     "compositionO2Oattr",
     "intIdentityIdTestEntityAssociationO2OAttr",
     "stringIdTestEntityAssociationO2O",
-    "stringIdTestEntityAssociationM2O",
-    "readOnlyStringAttr"
+    "stringIdTestEntityAssociationM2O"
   ];
 
   showDeletionDialog = (e: SerializedEntity<DatatypesTestEntity>) => {

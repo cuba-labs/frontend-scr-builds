@@ -114,8 +114,7 @@ class DatatypesEdit2Component extends React.Component<
     "intIdentityIdTestEntityAssociationO2OAttr",
     "integerIdTestEntityAssociationM2MAttr",
     "stringIdTestEntityAssociationO2O",
-    "stringIdTestEntityAssociationM2O",
-    "readOnlyStringAttr"
+    "stringIdTestEntityAssociationM2O"
   ];
 
   @observable globalErrors: string[] = [];
@@ -490,15 +489,6 @@ class DatatypesEdit2Component extends React.Component<
             form={this.props.form}
             formItemOpts={{ style: { marginBottom: "12px" } }}
             optionsContainer={this.stringIdTestEntityAssociationM2OsDc}
-            getFieldDecoratorOpts={{}}
-          />
-
-          <Field
-            entityName={DatatypesTestEntity.NAME}
-            propertyName="readOnlyStringAttr"
-            form={this.props.form}
-            formItemOpts={{ style: { marginBottom: "12px" } }}
-            disabled={true}
             getFieldDecoratorOpts={{}}
           />
 

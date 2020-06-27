@@ -34,7 +34,7 @@ class CompositionO2MBrowseComponent extends React.Component<
   );
   @observable selectedRowKey: string | undefined;
 
-  fields = ["quantity", "name", "datatypesTestEntity"];
+  fields = ["name", "datatypesTestEntity"];
 
   showDeletionDialog = (e: SerializedEntity<CompositionO2MTestEntity>) => {
     Modal.confirm({

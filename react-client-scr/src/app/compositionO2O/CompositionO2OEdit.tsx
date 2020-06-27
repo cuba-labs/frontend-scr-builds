@@ -55,7 +55,7 @@ class CompositionO2OEditComponent extends React.Component<
   @observable formRef: React.RefObject<Form> = React.createRef();
   reactionDisposers: IReactionDisposer[] = [];
 
-  fields = ["name", "quantity", "nestedComposition"];
+  fields = ["name", "nestedComposition"];
 
   @observable globalErrors: string[] = [];
 
@@ -140,14 +140,6 @@ class CompositionO2OEditComponent extends React.Component<
           <Field
             entityName={CompositionO2OTestEntity.NAME}
             propertyName="name"
-            form={this.props.form}
-            formItemOpts={{ style: { marginBottom: "12px" } }}
-            getFieldDecoratorOpts={{}}
-          />
-
-          <Field
-            entityName={CompositionO2OTestEntity.NAME}
-            propertyName="quantity"
             form={this.props.form}
             formItemOpts={{ style: { marginBottom: "12px" } }}
             getFieldDecoratorOpts={{}}

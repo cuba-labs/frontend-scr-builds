@@ -34,7 +34,7 @@ class CompositionO2OBrowseComponent extends React.Component<
   );
   @observable selectedRowKey: string | undefined;
 
-  fields = ["name", "quantity", "nestedComposition"];
+  fields = ["name", "nestedComposition"];
 
   showDeletionDialog = (e: SerializedEntity<CompositionO2OTestEntity>) => {
     Modal.confirm({
