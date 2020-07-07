@@ -2,10 +2,6 @@
   height: 100%;
 }
 
-.layout-container.ant-layout {
-  min-height: initial;
-}
-
 .layout-sider {
   background: #ffffff;
 }

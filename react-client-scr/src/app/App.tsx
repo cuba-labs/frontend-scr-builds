@@ -51,7 +51,7 @@ class AppComponent extends React.Component<
         <Layout.Header>
           <AppHeader />
         </Layout.Header>
-        <Layout className="layout-container">
+        <Layout>
           <Layout.Sider
             width={200}
             breakpoint="sm"
