@@ -39,7 +39,6 @@ class StringIdMgtListBrowseComponent extends React.Component<Props> {
   dataCollection = collection<StringIdTestEntity>(StringIdTestEntity.NAME, {
     view: "_local",
     sort: "-updateTs",
-
     loadImmediately: false,
 
     stringIdName: "identifier"

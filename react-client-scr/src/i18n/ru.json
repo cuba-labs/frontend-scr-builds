@@ -19,6 +19,7 @@
   "common.remove": "Удалить",
   "common.unsavedEntity": "(несохранённая сущность или сущность без имени)",
   "common.requestFailed": "Не удалось выполнить операцию",
+  "common.retry": "Повторить",
   "home.welcome": "Добро пожаловать в",
   "router.home": "Главная страница",
   "login.failed": "Не удалось войти",

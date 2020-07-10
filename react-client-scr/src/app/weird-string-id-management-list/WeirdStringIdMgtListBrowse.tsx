@@ -41,7 +41,6 @@ class WeirdStringIdMgtListBrowseComponent extends React.Component<Props> {
     {
       view: "_local",
       sort: "-updateTs",
-
       loadImmediately: false,
 
       stringIdName: "identifier"

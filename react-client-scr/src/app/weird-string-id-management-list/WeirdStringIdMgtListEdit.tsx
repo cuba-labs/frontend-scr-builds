@@ -130,10 +130,24 @@ class WeirdStringIdMgtListEditComponent extends React.Component<
       return <Redirect to={WeirdStringIdMgtListManagement.PATH} />;
     }
 
-    const { status } = this.dataInstance;
-    const { mainStore } = this.props;
+    const { status, lastError, load } = this.dataInstance;
+    const { mainStore, entityId } = this.props;
     if (mainStore == null || !mainStore.isEntityDataLoaded()) {
       return <Spinner />;
+    }
+
+    // do not stop on "COMMIT_ERROR" - it could be bean validation, so we should show fields with errors
+    if (status === "ERROR" && lastError === "LOAD_ERROR") {
+      return (
+        <>
+          <FormattedMessage id="common.requestFailed" />.
+          <br />
+          <br />
+          <Button htmlType="button" onClick={() => load(entityId)}>
+            <FormattedMessage id="common.retry" />
+          </Button>
+        </>
+      );
     }
 
     return (
@@ -175,7 +189,7 @@ class WeirdStringIdMgtListEditComponent extends React.Component<
             <Button
               type="primary"
               htmlType="submit"
-              disabled={status !== "DONE" && status !== "ERROR"}
+              disabled={status !== "DONE"}
               loading={status === "LOADING"}
               style={{ marginLeft: "8px" }}
             >
@@ -193,6 +207,18 @@ class WeirdStringIdMgtListEditComponent extends React.Component<
     } else {
       this.dataInstance.load(this.props.entityId);
     }
+
+    this.reactionDisposers.push(
+      reaction(
+        () => this.dataInstance.status,
+        () => {
+          const { intl } = this.props;
+          if (this.dataInstance.lastError != null) {
+            message.error(intl.formatMessage({ id: "common.requestFailed" }));
+          }
+        }
+      )
+    );
 
     this.reactionDisposers.push(
       reaction(

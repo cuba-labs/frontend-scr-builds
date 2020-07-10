@@ -39,7 +39,6 @@ class CarListComponent extends React.Component<Props> {
   dataCollection = collection<Car>(Car.NAME, {
     view: "car-edit",
     sort: "-updateTs",
-
     loadImmediately: false
   });
 

@@ -38,7 +38,6 @@ class IntIdMgtCardsBrowseComponent extends React.Component<Props> {
   dataCollection = collection<IntegerIdTestEntity>(IntegerIdTestEntity.NAME, {
     view: "_local",
     sort: "-updateTs",
-
     loadImmediately: false
   });
 

@@ -40,7 +40,6 @@ class IntIdentityIdMgtCardsBrowseComponent extends React.Component<Props> {
     {
       view: "_local",
       sort: "-updateTs",
-
       loadImmediately: false
     }
   );

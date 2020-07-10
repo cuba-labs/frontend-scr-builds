@@ -41,6 +41,7 @@ export class DatatypesTestEntity extends StandardEntity {
   datatypesTestEntity3?: DatatypesTestEntity3 | null;
   stringIdTestEntityAssociationO2O?: StringIdTestEntity | null;
   stringIdTestEntityAssociationM2O?: StringIdTestEntity | null;
+  readOnlyStringAttr?: string | null;
 }
 export type DatatypesTestEntityViewName =
   | "_base"
@@ -71,6 +72,7 @@ export type DatatypesTestEntityView<
       | "localTimeAttr"
       | "offsetTimeAttr"
       | "enumAttr"
+      | "readOnlyStringAttr"
     >
   : V extends "_local"
   ? Pick<
@@ -94,6 +96,7 @@ export type DatatypesTestEntityView<
       | "offsetTimeAttr"
       | "enumAttr"
       | "name"
+      | "readOnlyStringAttr"
     >
   : V extends "_minimal"
   ? Pick<DatatypesTestEntity, "id" | "name">
@@ -129,5 +132,6 @@ export type DatatypesTestEntityView<
       | "integerIdTestEntityAssociationM2MAttr"
       | "stringIdTestEntityAssociationO2O"
       | "stringIdTestEntityAssociationM2O"
+      | "readOnlyStringAttr"
     >
   : never;

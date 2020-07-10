@@ -39,7 +39,6 @@ class DatatypesBrowse2Component extends React.Component<Props> {
   dataCollection = collection<DatatypesTestEntity>(DatatypesTestEntity.NAME, {
     view: "datatypesTestEntity-view",
     sort: "-updateTs",
-
     loadImmediately: false
   });
 
@@ -67,7 +66,8 @@ class DatatypesBrowse2Component extends React.Component<Props> {
     "compositionO2Oattr",
     "intIdentityIdTestEntityAssociationO2OAttr",
     "stringIdTestEntityAssociationO2O",
-    "stringIdTestEntityAssociationM2O"
+    "stringIdTestEntityAssociationM2O",
+    "readOnlyStringAttr"
   ];
 
   componentDidMount(): void {

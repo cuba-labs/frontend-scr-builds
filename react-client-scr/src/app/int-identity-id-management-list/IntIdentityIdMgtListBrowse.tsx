@@ -41,7 +41,6 @@ class IntIdentityIdMgtListBrowseComponent extends React.Component<Props> {
     {
       view: "_local",
       sort: "-updateTs",
-
       loadImmediately: false
     }
   );

@@ -55,7 +55,7 @@ class CompositionO2OEditComponent extends React.Component<
   @observable formRef: React.RefObject<Form> = React.createRef();
   reactionDisposers: IReactionDisposer[] = [];
 
-  fields = ["name", "nestedComposition"];
+  fields = ["name", "quantity", "nestedComposition"];
 
   @observable globalErrors: string[] = [];
 
@@ -128,10 +128,24 @@ class CompositionO2OEditComponent extends React.Component<
       return <Redirect to={CompositionO2OManagement.PATH} />;
     }
 
-    const { status } = this.dataInstance;
-    const { mainStore } = this.props;
+    const { status, lastError, load } = this.dataInstance;
+    const { mainStore, entityId } = this.props;
     if (mainStore == null || !mainStore.isEntityDataLoaded()) {
       return <Spinner />;
+    }
+
+    // do not stop on "COMMIT_ERROR" - it could be bean validation, so we should show fields with errors
+    if (status === "ERROR" && lastError === "LOAD_ERROR") {
+      return (
+        <>
+          <FormattedMessage id="common.requestFailed" />.
+          <br />
+          <br />
+          <Button htmlType="button" onClick={() => load(entityId)}>
+            <FormattedMessage id="common.retry" />
+          </Button>
+        </>
+      );
     }
 
     return (
@@ -140,6 +154,14 @@ class CompositionO2OEditComponent extends React.Component<
           <Field
             entityName={CompositionO2OTestEntity.NAME}
             propertyName="name"
+            form={this.props.form}
+            formItemOpts={{ style: { marginBottom: "12px" } }}
+            getFieldDecoratorOpts={{}}
+          />
+
+          <Field
+            entityName={CompositionO2OTestEntity.NAME}
+            propertyName="quantity"
             form={this.props.form}
             formItemOpts={{ style: { marginBottom: "12px" } }}
             getFieldDecoratorOpts={{}}
@@ -176,7 +198,7 @@ class CompositionO2OEditComponent extends React.Component<
             <Button
               type="primary"
               htmlType="submit"
-              disabled={status !== "DONE" && status !== "ERROR"}
+              disabled={status !== "DONE"}
               loading={status === "LOADING"}
               style={{ marginLeft: "8px" }}
             >
@@ -194,6 +216,18 @@ class CompositionO2OEditComponent extends React.Component<
     } else {
       this.dataInstance.load(this.props.entityId);
     }
+
+    this.reactionDisposers.push(
+      reaction(
+        () => this.dataInstance.status,
+        () => {
+          const { intl } = this.props;
+          if (this.dataInstance.lastError != null) {
+            message.error(intl.formatMessage({ id: "common.requestFailed" }));
+          }
+        }
+      )
+    );
 
     this.reactionDisposers.push(
       reaction(
