@@ -10,7 +10,7 @@ export interface LanguageSwitcherProps {
 }
 
 export class LanguageSwitcher extends React.Component<LanguageSwitcherProps> {
-  localeOptions: string[] = ["en", "ru"];
+  localeOptions: string[] = ["en", "fr", "ru"];
 
   handleChange = (locale: string) => {
     getMainStore().setLocale(locale);
@@ -28,6 +28,7 @@ export class LanguageSwitcher extends React.Component<LanguageSwitcherProps> {
         size={"small"}
         style={this.props.style}
         className={this.props.className}
+        dropdownMatchSelectWidth={false}
       >
         {this.localeOptions.map(locale => (
           <Select.Option key={locale} value={locale}>

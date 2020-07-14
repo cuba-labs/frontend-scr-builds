@@ -14,6 +14,7 @@ import "@cuba-platform/react-ui/dist/index.min.css";
 import "./index.css";
 import { antdLocaleMapping, messagesMapping } from "./i18n/i18nMappings";
 import "moment/locale/ru";
+import "moment/locale/fr";
 
 export const cubaREST = initializeApp({
   name: "scr",
