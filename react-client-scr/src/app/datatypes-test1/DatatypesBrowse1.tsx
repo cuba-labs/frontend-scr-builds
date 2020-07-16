@@ -105,9 +105,7 @@ class DatatypesBrowse1Component extends React.Component<Props> {
       okText: this.props.intl.formatMessage({
         id: "management.browser.delete.ok"
       }),
-      cancelText: this.props.intl.formatMessage({
-        id: "management.browser.delete.cancel"
-      }),
+      cancelText: this.props.intl.formatMessage({ id: "common.cancel" }),
       onOk: () => {
         return this.dataCollection.delete(e);
       }
@@ -132,7 +130,7 @@ class DatatypesBrowse1Component extends React.Component<Props> {
           >
             <Button htmlType="button" type="primary" icon="plus">
               <span>
-                <FormattedMessage id="management.browser.create" />
+                <FormattedMessage id="common.create" />
               </span>
             </Button>
           </Link>

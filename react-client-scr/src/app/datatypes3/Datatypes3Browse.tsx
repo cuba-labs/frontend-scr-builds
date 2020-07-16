@@ -42,9 +42,7 @@ class Datatypes3BrowseComponent extends React.Component<
       okText: this.props.intl.formatMessage({
         id: "management.browser.delete.ok"
       }),
-      cancelText: this.props.intl.formatMessage({
-        id: "management.browser.delete.cancel"
-      }),
+      cancelText: this.props.intl.formatMessage({ id: "common.cancel" }),
       onOk: () => {
         this.selectedRowKey = undefined;
         return this.dataCollection.delete(e);
@@ -67,7 +65,7 @@ class Datatypes3BrowseComponent extends React.Component<
           icon="plus"
         >
           <span>
-            <FormattedMessage id="management.browser.create" />
+            <FormattedMessage id="common.create" />
           </span>
         </Button>
       </Link>,
@@ -81,7 +79,7 @@ class Datatypes3BrowseComponent extends React.Component<
           disabled={!this.selectedRowKey}
           type="default"
         >
-          <FormattedMessage id="management.browser.edit" />
+          <FormattedMessage id="common.edit" />
         </Button>
       </Link>,
       <Button
@@ -92,7 +90,7 @@ class Datatypes3BrowseComponent extends React.Component<
         key="remove"
         type="default"
       >
-        <FormattedMessage id="management.browser.remove" />
+        <FormattedMessage id="common.remove" />
       </Button>
     ];
 

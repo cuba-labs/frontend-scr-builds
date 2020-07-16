@@ -183,7 +183,7 @@ class WeirdStringIdMgtTableEditComponent extends React.Component<
           <Form.Item style={{ textAlign: "center" }}>
             <Link to={WeirdStringIdMgtTableManagement.PATH}>
               <Button htmlType="button">
-                <FormattedMessage id="management.editor.cancel" />
+                <FormattedMessage id="common.cancel" />
               </Button>
             </Link>
             <Button
@@ -193,7 +193,7 @@ class WeirdStringIdMgtTableEditComponent extends React.Component<
               loading={status === "LOADING"}
               style={{ marginLeft: "8px" }}
             >
-              <FormattedMessage id="management.editor.submit" />
+              <FormattedMessage id="common.submit" />
             </Button>
           </Form.Item>
         </Form>
