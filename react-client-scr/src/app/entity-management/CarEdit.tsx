@@ -1,8 +1,9 @@
 import * as React from "react";
-import { Form, Alert, Button, Card, message } from "antd";
-import { FormInstance } from "antd/es/form";
+import { FormEvent } from "react";
+import { Alert, Button, Card, Form, message } from "antd";
 import { observer } from "mobx-react";
 import { CarManagement } from "./CarManagement";
+import { FormComponentProps } from "antd/lib/form";
 import { Link, Redirect } from "react-router-dom";
 import { IReactionDisposer, observable, reaction, toJS } from "mobx";
 import {
@@ -10,10 +11,6 @@ import {
   injectIntl,
   WrappedComponentProps
 } from "react-intl";
-import {
-  defaultHandleFinish,
-  createAntdFormValidationMessages
-} from "@cuba-platform/react-ui";
 
 import {
   loadAssociationOptions,
@@ -23,7 +20,15 @@ import {
   injectMainStore
 } from "@cuba-platform/react-core";
 
-import { Field, MultilineText, Spinner } from "@cuba-platform/react-ui";
+import {
+  Field,
+  withLocalizedForm,
+  extractServerValidationErrors,
+  constructFieldsWithErrors,
+  clearFieldErrors,
+  MultilineText,
+  Spinner
+} from "@cuba-platform/react-ui";
 
 import "../../app/App.css";
 
@@ -32,7 +37,7 @@ import { Garage } from "../../cuba/entities/scr$Garage";
 import { TechnicalCertificate } from "../../cuba/entities/scr$TechnicalCertificate";
 import { FileDescriptor } from "../../cuba/entities/base/sys$FileDescriptor";
 
-type Props = EditorProps & MainStoreInjected;
+type Props = FormComponentProps & EditorProps & MainStoreInjected;
 
 type EditorProps = {
   entityId: string;
@@ -55,7 +60,7 @@ class CarEditComponent extends React.Component<Props & WrappedComponentProps> {
   @observable photosDc: DataCollectionStore<FileDescriptor> | undefined;
 
   @observable updated = false;
-  @observable formRef: React.RefObject<FormInstance> = React.createRef();
+  @observable formRef: React.RefObject<Form> = React.createRef();
   reactionDisposers: IReactionDisposer[] = [];
 
   fields = [
@@ -111,31 +116,64 @@ class CarEditComponent extends React.Component<Props & WrappedComponentProps> {
     }
   };
 
-  handleFinishFailed = () => {
-    const { intl } = this.props;
-    message.error(
-      intl.formatMessage({ id: "management.editor.validationError" })
-    );
-  };
-
-  handleFinish = (values: { [field: string]: any }) => {
-    const { intl } = this.props;
-
-    if (this.formRef.current != null) {
-      defaultHandleFinish(
-        values,
-        this.dataInstance,
-        intl,
-        this.formRef.current,
-        this.isNewEntity() ? "create" : "edit"
-      ).then(({ success, globalErrors }) => {
-        if (success) {
+  handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (err) {
+        message.error(
+          this.props.intl.formatMessage({
+            id: "management.editor.validationError"
+          })
+        );
+        return;
+      }
+      this.dataInstance
+        .update(
+          this.props.form.getFieldsValue(this.fields),
+          this.isNewEntity() ? "create" : "edit"
+        )
+        .then(() => {
+          message.success(
+            this.props.intl.formatMessage({ id: "management.editor.success" })
+          );
           this.updated = true;
-        } else {
-          this.globalErrors = globalErrors;
-        }
-      });
-    }
+        })
+        .catch((e: any) => {
+          if (e.response && typeof e.response.json === "function") {
+            e.response.json().then((response: any) => {
+              clearFieldErrors(this.props.form);
+              const {
+                globalErrors,
+                fieldErrors
+              } = extractServerValidationErrors(response);
+              this.globalErrors = globalErrors;
+              if (fieldErrors.size > 0) {
+                this.props.form.setFields(
+                  constructFieldsWithErrors(fieldErrors, this.props.form)
+                );
+              }
+
+              if (fieldErrors.size > 0 || globalErrors.length > 0) {
+                message.error(
+                  this.props.intl.formatMessage({
+                    id: "management.editor.validationError"
+                  })
+                );
+              } else {
+                message.error(
+                  this.props.intl.formatMessage({
+                    id: "management.editor.error"
+                  })
+                );
+              }
+            });
+          } else {
+            message.error(
+              this.props.intl.formatMessage({ id: "management.editor.error" })
+            );
+          }
+        });
+    });
   };
 
   isNewEntity = () => {
@@ -148,7 +186,7 @@ class CarEditComponent extends React.Component<Props & WrappedComponentProps> {
     }
 
     const { status, lastError, load } = this.dataInstance;
-    const { mainStore, entityId, intl } = this.props;
+    const { mainStore, entityId } = this.props;
     if (mainStore == null || !mainStore.isEntityDataLoaded()) {
       return <Spinner />;
     }
@@ -169,18 +207,13 @@ class CarEditComponent extends React.Component<Props & WrappedComponentProps> {
 
     return (
       <Card className="narrow-layout">
-        <Form
-          onFinish={this.handleFinish}
-          onFinishFailed={this.handleFinishFailed}
-          layout="vertical"
-          ref={this.formRef}
-          validateMessages={createAntdFormValidationMessages(intl)}
-        >
+        <Form onSubmit={this.handleSubmit} layout="vertical" ref={this.formRef}>
           <Field
             entityName={Car.NAME}
             propertyName="manufacturer"
-            formItemProps={{
-              style: { marginBottom: "12px" },
+            form={this.props.form}
+            formItemOpts={{ style: { marginBottom: "12px" } }}
+            getFieldDecoratorOpts={{
               rules: [{ required: true }]
             }}
           />
@@ -188,40 +221,41 @@ class CarEditComponent extends React.Component<Props & WrappedComponentProps> {
           <Field
             entityName={Car.NAME}
             propertyName="model"
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
+            form={this.props.form}
+            formItemOpts={{ style: { marginBottom: "12px" } }}
+            getFieldDecoratorOpts={{}}
           />
 
           <Field
             entityName={Car.NAME}
             propertyName="regNumber"
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
+            form={this.props.form}
+            formItemOpts={{ style: { marginBottom: "12px" } }}
+            getFieldDecoratorOpts={{}}
           />
 
           <Field
             entityName={Car.NAME}
             propertyName="purchaseDate"
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
+            form={this.props.form}
+            formItemOpts={{ style: { marginBottom: "12px" } }}
+            getFieldDecoratorOpts={{}}
           />
 
           <Field
             entityName={Car.NAME}
             propertyName="manufactureDate"
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
+            form={this.props.form}
+            formItemOpts={{ style: { marginBottom: "12px" } }}
+            getFieldDecoratorOpts={{}}
           />
 
           <Field
             entityName={Car.NAME}
             propertyName="wheelOnRight"
-            formItemProps={{
-              style: { marginBottom: "12px" },
+            form={this.props.form}
+            formItemOpts={{ style: { marginBottom: "12px" } }}
+            getFieldDecoratorOpts={{
               valuePropName: "checked"
             }}
           />
@@ -229,8 +263,9 @@ class CarEditComponent extends React.Component<Props & WrappedComponentProps> {
           <Field
             entityName={Car.NAME}
             propertyName="carType"
-            formItemProps={{
-              style: { marginBottom: "12px" },
+            form={this.props.form}
+            formItemOpts={{ style: { marginBottom: "12px" } }}
+            getFieldDecoratorOpts={{
               rules: [{ required: true }]
             }}
           />
@@ -238,60 +273,60 @@ class CarEditComponent extends React.Component<Props & WrappedComponentProps> {
           <Field
             entityName={Car.NAME}
             propertyName="ecoRank"
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
+            form={this.props.form}
+            formItemOpts={{ style: { marginBottom: "12px" } }}
+            getFieldDecoratorOpts={{}}
           />
 
           <Field
             entityName={Car.NAME}
             propertyName="maxPassengers"
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
+            form={this.props.form}
+            formItemOpts={{ style: { marginBottom: "12px" } }}
+            getFieldDecoratorOpts={{}}
           />
 
           <Field
             entityName={Car.NAME}
             propertyName="price"
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
+            form={this.props.form}
+            formItemOpts={{ style: { marginBottom: "12px" } }}
+            getFieldDecoratorOpts={{}}
           />
 
           <Field
             entityName={Car.NAME}
             propertyName="mileage"
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
+            form={this.props.form}
+            formItemOpts={{ style: { marginBottom: "12px" } }}
+            getFieldDecoratorOpts={{}}
           />
 
           <Field
             entityName={Car.NAME}
             propertyName="garage"
+            form={this.props.form}
+            formItemOpts={{ style: { marginBottom: "12px" } }}
             optionsContainer={this.garagesDc}
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
+            getFieldDecoratorOpts={{}}
           />
 
           <Field
             entityName={Car.NAME}
             propertyName="technicalCertificate"
+            form={this.props.form}
+            formItemOpts={{ style: { marginBottom: "12px" } }}
             optionsContainer={this.technicalCertificatesDc}
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
+            getFieldDecoratorOpts={{}}
           />
 
           <Field
             entityName={Car.NAME}
             propertyName="photo"
+            form={this.props.form}
+            formItemOpts={{ style: { marginBottom: "12px" } }}
             optionsContainer={this.photosDc}
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
+            getFieldDecoratorOpts={{}}
           />
 
           {this.globalErrors.length > 0 && (
@@ -311,7 +346,7 @@ class CarEditComponent extends React.Component<Props & WrappedComponentProps> {
             <Button
               type="primary"
               htmlType="submit"
-              disabled={status !== "DONE" && status !== "ERROR"}
+              disabled={status !== "DONE"}
               loading={status === "LOADING"}
               style={{ marginLeft: "8px" }}
             >
@@ -335,10 +370,7 @@ class CarEditComponent extends React.Component<Props & WrappedComponentProps> {
         () => this.dataInstance.status,
         () => {
           const { intl } = this.props;
-          if (
-            this.dataInstance.lastError != null &&
-            this.dataInstance.lastError !== "COMMIT_ERROR"
-          ) {
+          if (this.dataInstance.lastError != null) {
             message.error(intl.formatMessage({ id: "common.requestFailed" }));
           }
         }
@@ -371,7 +403,7 @@ class CarEditComponent extends React.Component<Props & WrappedComponentProps> {
               reaction(
                 () => this.dataInstance.item,
                 () => {
-                  formRefCurrent.setFieldsValue(
+                  this.props.form.setFieldsValue(
                     this.dataInstance.getFieldValues(this.fields)
                   );
                 },
@@ -391,4 +423,17 @@ class CarEditComponent extends React.Component<Props & WrappedComponentProps> {
   }
 }
 
-export default injectIntl(CarEditComponent);
+export default injectIntl(
+  withLocalizedForm<EditorProps>({
+    onValuesChange: (props: any, changedValues: any) => {
+      // Reset server-side errors when field is edited
+      Object.keys(changedValues).forEach((fieldName: string) => {
+        props.form.setFields({
+          [fieldName]: {
+            value: changedValues[fieldName]
+          }
+        });
+      });
+    }
+  })(CarEditComponent)
+);

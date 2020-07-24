@@ -1,8 +1,6 @@
 import * as React from "react";
-import { ChangeEvent } from "react";
-import { Form } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { Button, Input, message } from "antd";
+import { ChangeEvent, FormEvent } from "react";
+import { Button, Form, Icon, Input, message } from "antd";
 import { observer } from "mobx-react";
 import { action, observable } from "mobx";
 import { injectMainStore, MainStoreInjected } from "@cuba-platform/react-core";
@@ -33,7 +31,8 @@ class Login extends React.Component<MainStoreInjected & WrappedComponentProps> {
   };
 
   @action
-  doLogin = () => {
+  doLogin = (e: FormEvent) => {
+    e.preventDefault();
     this.performingLoginRequest = true;
     this.props
       .mainStore!.login(this.login, this.password)
@@ -59,7 +58,7 @@ class Login extends React.Component<MainStoreInjected & WrappedComponentProps> {
           className="logo"
         />
         <div className="title">sample-car-rent</div>
-        <Form layout="vertical" onFinish={this.doLogin}>
+        <Form layout="vertical" onSubmit={this.doLogin}>
           <Form.Item>
             <Input
               id="input_login"
@@ -68,7 +67,7 @@ class Login extends React.Component<MainStoreInjected & WrappedComponentProps> {
               })}
               onChange={this.changeLogin}
               value={this.login}
-              prefix={<UserOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
+              prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
               size="large"
             />
           </Form.Item>
@@ -81,7 +80,7 @@ class Login extends React.Component<MainStoreInjected & WrappedComponentProps> {
               onChange={this.changePassword}
               value={this.password}
               type="password"
-              prefix={<LockOutlined style={{ color: "rgba(0,0,0,.25)" }} />}
+              prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
               size="large"
             />
           </Form.Item>

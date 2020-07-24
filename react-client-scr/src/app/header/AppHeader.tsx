@@ -1,4 +1,3 @@
-import { LogoutOutlined } from "@ant-design/icons";
 import { Button, Modal } from "antd";
 import * as React from "react";
 import { observer } from "mobx-react";
@@ -31,7 +30,7 @@ class AppHeader extends React.Component<
             className="panelelement"
             id="button_logout"
             ghost={true}
-            icon={<LogoutOutlined />}
+            icon="logout"
             onClick={this.showLogoutConfirm}
           />
         </div>
