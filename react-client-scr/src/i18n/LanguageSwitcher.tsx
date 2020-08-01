@@ -27,7 +27,6 @@ export class LanguageSwitcher extends React.Component<LanguageSwitcherProps> {
         onChange={this.handleChange}
         size={"small"}
         style={this.props.style}
-        bordered={false}
         className={this.props.className}
         dropdownMatchSelectWidth={false}
       >

@@ -2,8 +2,8 @@ import * as React from "react";
 import { observer } from "mobx-react";
 import { Link } from "react-router-dom";
 import { IReactionDisposer, reaction } from "mobx";
-import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
-import { Modal, Button, List, message } from "antd";
+
+import { Modal, Button, List, Icon, message } from "antd";
 
 import {
   collection,
@@ -111,7 +111,7 @@ class WeirdStringIdMgtListBrowseComponent extends React.Component<Props> {
               WeirdStringIdMgtListManagement.NEW_SUBPATH
             }
           >
-            <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
+            <Button htmlType="button" type="primary" icon="plus">
               <span>
                 <FormattedMessage id="common.create" />
               </span>
@@ -126,7 +126,8 @@ class WeirdStringIdMgtListBrowseComponent extends React.Component<Props> {
           renderItem={item => (
             <List.Item
               actions={[
-                <DeleteOutlined
+                <Icon
+                  type="delete"
                   key="delete"
                   onClick={() => this.showDeletionDialog(item)}
                 />,
@@ -134,7 +135,7 @@ class WeirdStringIdMgtListBrowseComponent extends React.Component<Props> {
                   to={WeirdStringIdMgtListManagement.PATH + "/" + item.id}
                   key="edit"
                 >
-                  <EditOutlined />
+                  <Icon type="edit" />
                 </Link>
               ]}
             >

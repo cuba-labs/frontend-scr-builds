@@ -2,8 +2,8 @@ import * as React from "react";
 import { observer } from "mobx-react";
 import { Link } from "react-router-dom";
 import { IReactionDisposer, reaction } from "mobx";
-import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
-import { Modal, Button, List, message } from "antd";
+
+import { Modal, Button, List, Icon, message } from "antd";
 
 import {
   collection,
@@ -115,7 +115,7 @@ class CarListComponent extends React.Component<Props> {
       <div className="narrow-layout">
         <div style={{ marginBottom: "12px" }}>
           <Link to={CarManagement2.PATH + "/" + CarManagement2.NEW_SUBPATH}>
-            <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
+            <Button htmlType="button" type="primary" icon="plus">
               <span>
                 <FormattedMessage id="common.create" />
               </span>
@@ -130,12 +130,13 @@ class CarListComponent extends React.Component<Props> {
           renderItem={item => (
             <List.Item
               actions={[
-                <DeleteOutlined
+                <Icon
+                  type="delete"
                   key="delete"
                   onClick={() => this.showDeletionDialog(item)}
                 />,
                 <Link to={CarManagement2.PATH + "/" + item.id} key="edit">
-                  <EditOutlined />
+                  <Icon type="edit" />
                 </Link>
               ]}
             >
