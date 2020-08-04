@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@cuba-platform/react-core": "file:../packages/cuba-react-core/cuba-platform-react-core-1.0.2.tgz",
-    "@cuba-platform/react-ui": "file:../packages/cuba-react-ui/cuba-platform-react-ui-1.0.2.tgz",
-    "@cuba-platform/rest": "file:../packages/cuba-rest-js/cuba-platform-rest-1.0.0.tgz",
+    "@cuba-platform/react-core": "file:../packages/cuba-react-core/cuba-platform-react-core-1.1.0.tgz",
+    "@cuba-platform/react-ui": "file:../packages/cuba-react-ui/cuba-platform-react-ui-1.1.0.tgz",
+    "@cuba-platform/rest": "file:../packages/cuba-rest-js/cuba-platform-rest-1.0.1.tgz",
     "antd": "^3.23.4",
     "mobx": "^4.13.0",
     "mobx-react": "^5.4.4",
