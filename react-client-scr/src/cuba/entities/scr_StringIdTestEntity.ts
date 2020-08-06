@@ -20,9 +20,9 @@ export type StringIdTestEntityViewName = "_base" | "_local" | "_minimal";
 export type StringIdTestEntityView<
   V extends StringIdTestEntityViewName
 > = V extends "_base"
-  ? Pick<StringIdTestEntity, "description" | "productCode">
+  ? Pick<StringIdTestEntity, "id" | "description" | "productCode">
   : V extends "_local"
-  ? Pick<StringIdTestEntity, "description" | "productCode">
+  ? Pick<StringIdTestEntity, "id" | "description" | "productCode">
   : V extends "_minimal"
-  ? Pick<StringIdTestEntity, "description">
+  ? Pick<StringIdTestEntity, "id">
   : never;
