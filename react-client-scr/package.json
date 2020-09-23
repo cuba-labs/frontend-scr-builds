@@ -9,7 +9,7 @@
     "@cuba-platform/rest": "file:../packages/cuba-rest-js/cuba-platform-rest-1.0.1.tgz",
     "antd": "^4.0.0",
     "mobx": "^4.13.0",
-    "mobx-react": "^6.3.0",
+    "mobx-react": "^6.2.2",
     "moment": "^2.25.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
