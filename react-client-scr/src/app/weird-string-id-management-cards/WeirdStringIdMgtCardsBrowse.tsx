@@ -14,7 +14,8 @@ import {
   EntityProperty,
   Paging,
   setPagination,
-  Spinner
+  Spinner,
+  EntityPermAccessControl
 } from "@cuba-platform/react-ui";
 
 import { WeirdStringIdTestEntity } from "../../cuba/entities/scr_WeirdStringIdTestEntity";
@@ -102,21 +103,26 @@ class WeirdStringIdMgtCardsBrowseComponent extends React.Component<Props> {
 
     return (
       <div className="narrow-layout">
-        <div style={{ marginBottom: "12px" }}>
-          <Link
-            to={
-              WeirdStringIdMgtCardsManagement.PATH +
-              "/" +
-              WeirdStringIdMgtCardsManagement.NEW_SUBPATH
-            }
-          >
-            <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
-              <span>
-                <FormattedMessage id="common.create" />
-              </span>
-            </Button>
-          </Link>
-        </div>
+        <EntityPermAccessControl
+          entityName={WeirdStringIdTestEntity.NAME}
+          operation="create"
+        >
+          <div style={{ marginBottom: "12px" }}>
+            <Link
+              to={
+                WeirdStringIdMgtCardsManagement.PATH +
+                "/" +
+                WeirdStringIdMgtCardsManagement.NEW_SUBPATH
+              }
+            >
+              <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
+                <span>
+                  <FormattedMessage id="common.create" />
+                </span>
+              </Button>
+            </Link>
+          </div>
+        </EntityPermAccessControl>
 
         {items == null || items.length === 0 ? (
           <p>

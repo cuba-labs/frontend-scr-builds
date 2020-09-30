@@ -14,7 +14,8 @@ import {
   EntityProperty,
   Paging,
   setPagination,
-  Spinner
+  Spinner,
+  EntityPermAccessControl
 } from "@cuba-platform/react-ui";
 
 import { IntIdentityIdTestEntity } from "../../cuba/entities/scr_IntIdentityIdTestEntity";
@@ -100,21 +101,26 @@ class IntIdentityIdMgtCardsBrowseComponent extends React.Component<Props> {
 
     return (
       <div className="narrow-layout">
-        <div style={{ marginBottom: "12px" }}>
-          <Link
-            to={
-              IntIdentityIdMgtCardsManagement.PATH +
-              "/" +
-              IntIdentityIdMgtCardsManagement.NEW_SUBPATH
-            }
-          >
-            <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
-              <span>
-                <FormattedMessage id="common.create" />
-              </span>
-            </Button>
-          </Link>
-        </div>
+        <EntityPermAccessControl
+          entityName={IntIdentityIdTestEntity.NAME}
+          operation="create"
+        >
+          <div style={{ marginBottom: "12px" }}>
+            <Link
+              to={
+                IntIdentityIdMgtCardsManagement.PATH +
+                "/" +
+                IntIdentityIdMgtCardsManagement.NEW_SUBPATH
+              }
+            >
+              <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
+                <span>
+                  <FormattedMessage id="common.create" />
+                </span>
+              </Button>
+            </Link>
+          </div>
+        </EntityPermAccessControl>
 
         {items == null || items.length === 0 ? (
           <p>

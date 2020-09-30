@@ -14,7 +14,8 @@ import {
   EntityProperty,
   Paging,
   setPagination,
-  Spinner
+  Spinner,
+  EntityPermAccessControl
 } from "@cuba-platform/react-ui";
 
 import { DatatypesTestEntity } from "../../cuba/entities/scr_DatatypesTestEntity";
@@ -122,19 +123,26 @@ class DatatypesBrowse1Component extends React.Component<Props> {
 
     return (
       <div className="narrow-layout">
-        <div style={{ marginBottom: "12px" }}>
-          <Link
-            to={
-              DatatypesManagement1.PATH + "/" + DatatypesManagement1.NEW_SUBPATH
-            }
-          >
-            <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
-              <span>
-                <FormattedMessage id="common.create" />
-              </span>
-            </Button>
-          </Link>
-        </div>
+        <EntityPermAccessControl
+          entityName={DatatypesTestEntity.NAME}
+          operation="create"
+        >
+          <div style={{ marginBottom: "12px" }}>
+            <Link
+              to={
+                DatatypesManagement1.PATH +
+                "/" +
+                DatatypesManagement1.NEW_SUBPATH
+              }
+            >
+              <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
+                <span>
+                  <FormattedMessage id="common.create" />
+                </span>
+              </Button>
+            </Link>
+          </div>
+        </EntityPermAccessControl>
 
         {items == null || items.length === 0 ? (
           <p>
