@@ -8,14 +8,14 @@ import { Modal, Button, Card, message } from "antd";
 import {
   collection,
   injectMainStore,
-  MainStoreInjected
+  MainStoreInjected,
+  EntityPermAccessControl
 } from "@cuba-platform/react-core";
 import {
   EntityProperty,
   Paging,
   setPagination,
-  Spinner,
-  EntityPermAccessControl
+  Spinner
 } from "@cuba-platform/react-ui";
 
 import { IntIdentityIdTestEntity } from "../../cuba/entities/scr_IntIdentityIdTestEntity";

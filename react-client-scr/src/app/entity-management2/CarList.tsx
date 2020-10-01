@@ -8,14 +8,14 @@ import { Modal, Button, List, message } from "antd";
 import {
   collection,
   injectMainStore,
-  MainStoreInjected
+  MainStoreInjected,
+  EntityPermAccessControl
 } from "@cuba-platform/react-core";
 import {
   EntityProperty,
   Paging,
   setPagination,
-  Spinner,
-  EntityPermAccessControl
+  Spinner
 } from "@cuba-platform/react-ui";
 
 import { Car } from "../../cuba/entities/scr$Car";

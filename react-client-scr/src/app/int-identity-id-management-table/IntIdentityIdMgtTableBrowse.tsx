@@ -8,13 +8,10 @@ import { PlusOutlined } from "@ant-design/icons";
 import {
   collection,
   injectMainStore,
-  MainStoreInjected
-} from "@cuba-platform/react-core";
-import {
-  DataTable,
-  Spinner,
+  MainStoreInjected,
   EntityPermAccessControl
-} from "@cuba-platform/react-ui";
+} from "@cuba-platform/react-core";
+import { DataTable, Spinner } from "@cuba-platform/react-ui";
 
 import { IntIdentityIdTestEntity } from "../../cuba/entities/scr_IntIdentityIdTestEntity";
 import { SerializedEntity } from "@cuba-platform/rest";
