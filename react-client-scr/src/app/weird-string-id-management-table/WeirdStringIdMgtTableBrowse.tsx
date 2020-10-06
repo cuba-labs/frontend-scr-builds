@@ -8,8 +8,7 @@ import { PlusOutlined } from "@ant-design/icons";
 import {
   collection,
   injectMainStore,
-  MainStoreInjected,
-  EntityPermAccessControl
+  MainStoreInjected
 } from "@cuba-platform/react-core";
 import { DataTable, Spinner } from "@cuba-platform/react-ui";
 
@@ -61,63 +60,48 @@ class WeirdStringIdMgtTableBrowseComponent extends React.Component<
     if (this.props.mainStore?.isEntityDataLoaded() !== true) return <Spinner />;
 
     const buttons = [
-      <EntityPermAccessControl
-        entityName={WeirdStringIdTestEntity.NAME}
-        operation="create"
+      <Link
+        to={
+          WeirdStringIdMgtTableManagement.PATH +
+          "/" +
+          WeirdStringIdMgtTableManagement.NEW_SUBPATH
+        }
         key="create"
       >
-        <Link
-          to={
-            WeirdStringIdMgtTableManagement.PATH +
-            "/" +
-            WeirdStringIdMgtTableManagement.NEW_SUBPATH
-          }
+        <Button
+          htmlType="button"
+          style={{ margin: "0 12px 12px 0" }}
+          type="primary"
+          icon={<PlusOutlined />}
         >
-          <Button
-            htmlType="button"
-            style={{ margin: "0 12px 12px 0" }}
-            type="primary"
-            icon={<PlusOutlined />}
-          >
-            <span>
-              <FormattedMessage id="common.create" />
-            </span>
-          </Button>
-        </Link>
-      </EntityPermAccessControl>,
-      <EntityPermAccessControl
-        entityName={WeirdStringIdTestEntity.NAME}
-        operation="update"
-        key="update"
-      >
-        <Link
-          to={WeirdStringIdMgtTableManagement.PATH + "/" + this.selectedRowKey}
-        >
-          <Button
-            htmlType="button"
-            style={{ margin: "0 12px 12px 0" }}
-            disabled={!this.selectedRowKey}
-            type="default"
-          >
-            <FormattedMessage id="common.edit" />
-          </Button>
-        </Link>
-      </EntityPermAccessControl>,
-      <EntityPermAccessControl
-        entityName={WeirdStringIdTestEntity.NAME}
-        operation="delete"
-        key="delete"
+          <span>
+            <FormattedMessage id="common.create" />
+          </span>
+        </Button>
+      </Link>,
+      <Link
+        to={WeirdStringIdMgtTableManagement.PATH + "/" + this.selectedRowKey}
+        key="edit"
       >
         <Button
           htmlType="button"
           style={{ margin: "0 12px 12px 0" }}
           disabled={!this.selectedRowKey}
-          onClick={this.deleteSelectedRow}
           type="default"
         >
-          <FormattedMessage id="common.remove" />
+          <FormattedMessage id="common.edit" />
         </Button>
-      </EntityPermAccessControl>
+      </Link>,
+      <Button
+        htmlType="button"
+        style={{ margin: "0 12px 12px 0" }}
+        disabled={!this.selectedRowKey}
+        onClick={this.deleteSelectedRow}
+        key="remove"
+        type="default"
+      >
+        <FormattedMessage id="common.remove" />
+      </Button>
     ];
 
     return (

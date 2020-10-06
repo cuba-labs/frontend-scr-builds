@@ -8,8 +8,7 @@ import { Modal, Button, List, message } from "antd";
 import {
   collection,
   injectMainStore,
-  MainStoreInjected,
-  EntityPermAccessControl
+  MainStoreInjected
 } from "@cuba-platform/react-core";
 import {
   EntityProperty,
@@ -114,17 +113,15 @@ class CarListComponent extends React.Component<Props> {
 
     return (
       <div className="narrow-layout">
-        <EntityPermAccessControl entityName={Car.NAME} operation="create">
-          <div style={{ marginBottom: "12px" }}>
-            <Link to={CarManagement2.PATH + "/" + CarManagement2.NEW_SUBPATH}>
-              <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
-                <span>
-                  <FormattedMessage id="common.create" />
-                </span>
-              </Button>
-            </Link>
-          </div>
-        </EntityPermAccessControl>
+        <div style={{ marginBottom: "12px" }}>
+          <Link to={CarManagement2.PATH + "/" + CarManagement2.NEW_SUBPATH}>
+            <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
+              <span>
+                <FormattedMessage id="common.create" />
+              </span>
+            </Button>
+          </Link>
+        </div>
 
         <List
           itemLayout="horizontal"

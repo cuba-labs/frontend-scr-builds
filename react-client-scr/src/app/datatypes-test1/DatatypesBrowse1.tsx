@@ -8,8 +8,7 @@ import { Modal, Button, Card, message } from "antd";
 import {
   collection,
   injectMainStore,
-  MainStoreInjected,
-  EntityPermAccessControl
+  MainStoreInjected
 } from "@cuba-platform/react-core";
 import {
   EntityProperty,
@@ -123,26 +122,19 @@ class DatatypesBrowse1Component extends React.Component<Props> {
 
     return (
       <div className="narrow-layout">
-        <EntityPermAccessControl
-          entityName={DatatypesTestEntity.NAME}
-          operation="create"
-        >
-          <div style={{ marginBottom: "12px" }}>
-            <Link
-              to={
-                DatatypesManagement1.PATH +
-                "/" +
-                DatatypesManagement1.NEW_SUBPATH
-              }
-            >
-              <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
-                <span>
-                  <FormattedMessage id="common.create" />
-                </span>
-              </Button>
-            </Link>
-          </div>
-        </EntityPermAccessControl>
+        <div style={{ marginBottom: "12px" }}>
+          <Link
+            to={
+              DatatypesManagement1.PATH + "/" + DatatypesManagement1.NEW_SUBPATH
+            }
+          >
+            <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
+              <span>
+                <FormattedMessage id="common.create" />
+              </span>
+            </Button>
+          </Link>
+        </div>
 
         {items == null || items.length === 0 ? (
           <p>
