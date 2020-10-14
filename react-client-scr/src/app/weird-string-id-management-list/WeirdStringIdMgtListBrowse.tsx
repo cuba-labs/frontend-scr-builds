@@ -8,7 +8,8 @@ import { Modal, Button, List, message } from "antd";
 import {
   collection,
   injectMainStore,
-  MainStoreInjected
+  MainStoreInjected,
+  EntityPermAccessControl
 } from "@cuba-platform/react-core";
 import {
   EntityProperty,
@@ -103,21 +104,26 @@ class WeirdStringIdMgtListBrowseComponent extends React.Component<Props> {
 
     return (
       <div className="narrow-layout">
-        <div style={{ marginBottom: "12px" }}>
-          <Link
-            to={
-              WeirdStringIdMgtListManagement.PATH +
-              "/" +
-              WeirdStringIdMgtListManagement.NEW_SUBPATH
-            }
-          >
-            <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
-              <span>
-                <FormattedMessage id="common.create" />
-              </span>
-            </Button>
-          </Link>
-        </div>
+        <EntityPermAccessControl
+          entityName={WeirdStringIdTestEntity.NAME}
+          operation="create"
+        >
+          <div style={{ marginBottom: "12px" }}>
+            <Link
+              to={
+                WeirdStringIdMgtListManagement.PATH +
+                "/" +
+                WeirdStringIdMgtListManagement.NEW_SUBPATH
+              }
+            >
+              <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
+                <span>
+                  <FormattedMessage id="common.create" />
+                </span>
+              </Button>
+            </Link>
+          </div>
+        </EntityPermAccessControl>
 
         <List
           itemLayout="horizontal"

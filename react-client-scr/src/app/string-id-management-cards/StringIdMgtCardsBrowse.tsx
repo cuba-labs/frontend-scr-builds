@@ -8,7 +8,8 @@ import { Modal, Button, Card, message } from "antd";
 import {
   collection,
   injectMainStore,
-  MainStoreInjected
+  MainStoreInjected,
+  EntityPermAccessControl
 } from "@cuba-platform/react-core";
 import {
   EntityProperty,
@@ -99,21 +100,26 @@ class StringIdMgtCardsBrowseComponent extends React.Component<Props> {
 
     return (
       <div className="narrow-layout">
-        <div style={{ marginBottom: "12px" }}>
-          <Link
-            to={
-              StringIdMgtCardsManagement.PATH +
-              "/" +
-              StringIdMgtCardsManagement.NEW_SUBPATH
-            }
-          >
-            <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
-              <span>
-                <FormattedMessage id="common.create" />
-              </span>
-            </Button>
-          </Link>
-        </div>
+        <EntityPermAccessControl
+          entityName={StringIdTestEntity.NAME}
+          operation="create"
+        >
+          <div style={{ marginBottom: "12px" }}>
+            <Link
+              to={
+                StringIdMgtCardsManagement.PATH +
+                "/" +
+                StringIdMgtCardsManagement.NEW_SUBPATH
+              }
+            >
+              <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
+                <span>
+                  <FormattedMessage id="common.create" />
+                </span>
+              </Button>
+            </Link>
+          </div>
+        </EntityPermAccessControl>
 
         {items == null || items.length === 0 ? (
           <p>
