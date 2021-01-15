@@ -22,7 +22,9 @@ import { AssociationM2MManagement } from "./app/associationM2M/AssociationM2MMan
 import { AssociationM2OManagement } from "./app/associationM2O/AssociationM2OManagement";
 import { AssociationO2MManagement } from "./app/associationO2M/AssociationO2MManagement";
 import { AssociationO2OManagement } from "./app/associationO2O/AssociationO2OManagement";
-import { HooksPOCManagement } from "./app/hooks-poc/HooksPOCManagement";
+import { HooksEMTableMgt } from "./app/hooks-em-table/HooksEMTableMgt";
+import { HooksEMListMgt } from "./app/hooks-em-list/HooksEMListMgt";
+import { HooksEMCardsMgt } from "./app/hooks-em-cards/HooksEMCardsMgt";
 import { DatatypesManagement3 } from "./app/datatypes-test3/DatatypesManagement3";
 import { DatatypesManagement2 } from "./app/datatypes-test2/DatatypesManagement2";
 import { DatatypesManagement1 } from "./app/datatypes-test1/DatatypesManagement1";
@@ -103,10 +105,24 @@ menuItems.push({
 });
 
 menuItems.push({
-  pathPattern: "/hooksPOCManagement/:entityId?",
-  menuLink: "/hooksPOCManagement",
-  component: HooksPOCManagement,
-  caption: "HooksPOCManagement"
+  pathPattern: "/hooksEMCardsMgt/:entityId?",
+  menuLink: "/hooksEMCardsMgt",
+  component: HooksEMCardsMgt,
+  caption: "HooksEMCardsMgt"
+});
+
+menuItems.push({
+  pathPattern: "/hooksEMListMgt/:entityId?",
+  menuLink: "/hooksEMListMgt",
+  component: HooksEMListMgt,
+  caption: "HooksEMListMgt"
+});
+
+menuItems.push({
+  pathPattern: "/hooksEMTableMgt/:entityId?",
+  menuLink: "/hooksEMTableMgt",
+  component: HooksEMTableMgt,
+  caption: "HooksEMTableMgt"
 });
 
 menuItems.push({

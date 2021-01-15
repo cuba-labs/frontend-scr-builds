@@ -6,7 +6,8 @@ import { Modal, Button, Card, message } from "antd";
 import {
   useCollection,
   useMainStore,
-  useReaction
+  useReaction,
+  EntityPermAccessControl
 } from "@cuba-platform/react-core";
 import {
   EntityProperty,
@@ -108,16 +109,20 @@ const HooksEMCardsBrowse = (props: Props) => {
 
     return (
       <div className="narrow-layout">
-        <div style={{ marginBottom: "12px" }}>
-          <Link to={PATH + "/" + NEW_SUBPATH}>
-            <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
-              <span>
-                <FormattedMessage id="common.create" />
-              </span>
-            </Button>
-          </Link>
-        </div>
-
+        <EntityPermAccessControl
+          entityName={DatatypesTestEntity.NAME}
+          operation="create"
+        >
+          <div style={{ marginBottom: "12px" }}>
+            <Link to={PATH + "/" + NEW_SUBPATH}>
+              <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
+                <span>
+                  <FormattedMessage id="common.create" />
+                </span>
+              </Button>
+            </Link>
+          </div>
+        </EntityPermAccessControl>
         {items == null || items.length === 0 ? (
           <p>
             <FormattedMessage id="management.browser.noItems" />
