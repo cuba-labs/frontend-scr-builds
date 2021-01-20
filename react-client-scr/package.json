@@ -9,7 +9,7 @@
     "@cuba-platform/rest": "file:../packages/cuba-rest-js/cuba-platform-rest-2.0.0-dev.3.tgz",
     "antd": "^4.0.0",
     "mobx": "^4.13.0",
-    "mobx-react": "^6.2.2",
+    "mobx-react": "^6.3.0",
     "moment": "^2.25.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -33,7 +33,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-input-mask": "^2.0.5",
     "@types/react-router-dom": "^5.1.5",
-    "typescript": "~3.7.4"
+    "typescript": "~4.1.3"
   },
   "cubaPlatform": {
     "generator": "react-typescript"
