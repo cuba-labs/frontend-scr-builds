@@ -13,9 +13,9 @@ import {
 } from "@cuba-platform/react-core";
 import { DataTable, Spinner } from "@cuba-platform/react-ui";
 
-import { DatatypesTestEntity } from "../../cuba/entities/scr_DatatypesTestEntity";
+import { CompositeKeyEntity } from "../../cuba/entities/scr_CompositeKeyEntity";
 import { SerializedEntity } from "@cuba-platform/rest";
-import { DatatypesManagement3 } from "./DatatypesManagement3";
+import { CompositeKeyEntityManagement } from "./CompositeKeyEntityManagement";
 import {
   FormattedMessage,
   injectIntl,
@@ -24,43 +24,17 @@ import {
 
 @injectMainStore
 @observer
-class DatatypesBrowse3Component extends React.Component<
+class CompositeKeyEntityTableComponent extends React.Component<
   MainStoreInjected & WrappedComponentProps
 > {
-  dataCollection = collection<DatatypesTestEntity>(DatatypesTestEntity.NAME, {
-    view: "datatypesTestEntity-view",
-    sort: "-updateTs"
+  dataCollection = collection<CompositeKeyEntity>(CompositeKeyEntity.NAME, {
+    view: "_local"
   });
   @observable selectedRowKey: string | undefined;
 
-  fields = [
-    "bigDecimalAttr",
-    "booleanAttr",
-    "dateAttr",
-    "dateTimeAttr",
-    "doubleAttr",
-    "integerAttr",
-    "longAttr",
-    "stringAttr",
-    "timeAttr",
-    "uuidAttr",
-    "localDateTimeAttr",
-    "offsetDateTimeAttr",
-    "localDateAttr",
-    "localTimeAttr",
-    "offsetTimeAttr",
-    "enumAttr",
-    "name",
-    "readOnlyStringAttr",
-    "associationO2Oattr",
-    "associationM2Oattr",
-    "compositionO2Oattr",
-    "intIdentityIdTestEntityAssociationO2OAttr",
-    "stringIdTestEntityAssociationO2O",
-    "stringIdTestEntityAssociationM2O"
-  ];
+  fields = ["testfld"];
 
-  showDeletionDialog = (e: SerializedEntity<DatatypesTestEntity>) => {
+  showDeletionDialog = (e: SerializedEntity<CompositeKeyEntity>) => {
     Modal.confirm({
       title: this.props.intl.formatMessage(
         { id: "management.browser.delete.areYouSure" },
@@ -82,13 +56,15 @@ class DatatypesBrowse3Component extends React.Component<
 
     const buttons = [
       <EntityPermAccessControl
-        entityName={DatatypesTestEntity.NAME}
+        entityName={CompositeKeyEntity.NAME}
         operation="create"
         key="create"
       >
         <Link
           to={
-            DatatypesManagement3.PATH + "/" + DatatypesManagement3.NEW_SUBPATH
+            CompositeKeyEntityManagement.PATH +
+            "/" +
+            CompositeKeyEntityManagement.NEW_SUBPATH
           }
         >
           <Button
@@ -104,11 +80,13 @@ class DatatypesBrowse3Component extends React.Component<
         </Link>
       </EntityPermAccessControl>,
       <EntityPermAccessControl
-        entityName={DatatypesTestEntity.NAME}
+        entityName={CompositeKeyEntity.NAME}
         operation="update"
         key="update"
       >
-        <Link to={DatatypesManagement3.PATH + "/" + this.selectedRowKey}>
+        <Link
+          to={CompositeKeyEntityManagement.PATH + "/" + this.selectedRowKey}
+        >
           <Button
             htmlType="button"
             style={{ margin: "0 12px 12px 0" }}
@@ -120,7 +98,7 @@ class DatatypesBrowse3Component extends React.Component<
         </Link>
       </EntityPermAccessControl>,
       <EntityPermAccessControl
-        entityName={DatatypesTestEntity.NAME}
+        entityName={CompositeKeyEntity.NAME}
         operation="delete"
         key="delete"
       >
@@ -147,9 +125,9 @@ class DatatypesBrowse3Component extends React.Component<
     );
   }
 
-  getRecordById(id: string): SerializedEntity<DatatypesTestEntity> {
+  getRecordById(id: string): SerializedEntity<CompositeKeyEntity> {
     const record:
-      | SerializedEntity<DatatypesTestEntity>
+      | SerializedEntity<CompositeKeyEntity>
       | undefined = this.dataCollection.items.find(record => record.id === id);
 
     if (!record) {
@@ -168,6 +146,6 @@ class DatatypesBrowse3Component extends React.Component<
   };
 }
 
-const DatatypesBrowse3 = injectIntl(DatatypesBrowse3Component);
+const CompositeKeyEntityTable = injectIntl(CompositeKeyEntityTableComponent);
 
-export default DatatypesBrowse3;
+export default CompositeKeyEntityTable;
