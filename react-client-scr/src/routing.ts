@@ -1,4 +1,3 @@
-import { CompositeKeyEntityManagement } from "./app/composite-key-entity-management-table/CompositeKeyEntityManagement";
 import { BoringStringIdManagementTable } from "./app/boring-string-id-management-table/BoringStringIdManagementTable";
 import { WeirdStringIdMgtTableManagement } from "./app/weird-string-id-management-table/WeirdStringIdMgtTableManagement";
 import { WeirdStringIdMgtListManagement } from "./app/weird-string-id-management-list/WeirdStringIdMgtListManagement";
@@ -292,11 +291,4 @@ menuItems.push({
   menuLink: "/boringStringIdManagementTable",
   component: BoringStringIdManagementTable,
   caption: "BoringStringIdManagementTable"
-});
-
-menuItems.push({
-  pathPattern: "/compositeKeyEntityManagement/:entityId?",
-  menuLink: "/compositeKeyEntityManagement",
-  component: CompositeKeyEntityManagement,
-  caption: "CompositeKeyEntityManagement"
 });

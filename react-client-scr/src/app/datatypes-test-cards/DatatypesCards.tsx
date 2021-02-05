@@ -52,13 +52,13 @@ export class DatatypesCards extends React.Component<Props> {
     "offsetTimeAttr",
     "enumAttr",
     "name",
-    "readOnlyStringAttr",
     "associationO2Oattr",
     "associationM2Oattr",
     "compositionO2Oattr",
     "intIdentityIdTestEntityAssociationO2OAttr",
     "stringIdTestEntityAssociationO2O",
-    "stringIdTestEntityAssociationM2O"
+    "stringIdTestEntityAssociationM2O",
+    "readOnlyStringAttr"
   ];
 
   componentDidMount(): void {

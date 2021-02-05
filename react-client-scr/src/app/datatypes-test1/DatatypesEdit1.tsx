@@ -101,7 +101,6 @@ class DatatypesEdit1Component extends React.Component<
     "offsetTimeAttr",
     "enumAttr",
     "name",
-    "readOnlyStringAttr",
     "associationO2Oattr",
     "associationM2Oattr",
     "associationM2Mattr",
@@ -110,7 +109,8 @@ class DatatypesEdit1Component extends React.Component<
     "intIdentityIdTestEntityAssociationO2OAttr",
     "integerIdTestEntityAssociationM2MAttr",
     "stringIdTestEntityAssociationO2O",
-    "stringIdTestEntityAssociationM2O"
+    "stringIdTestEntityAssociationM2O",
+    "readOnlyStringAttr"
   ];
 
   @observable globalErrors: string[] = [];
@@ -385,15 +385,6 @@ class DatatypesEdit1Component extends React.Component<
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            propertyName="readOnlyStringAttr"
-            disabled={true}
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
-          />
-
-          <Field
-            entityName={DatatypesTestEntity.NAME}
             propertyName="associationO2Oattr"
             optionsContainer={this.associationO2OattrsDc}
             formItemProps={{
@@ -478,6 +469,15 @@ class DatatypesEdit1Component extends React.Component<
             entityName={DatatypesTestEntity.NAME}
             propertyName="stringIdTestEntityAssociationM2O"
             optionsContainer={this.stringIdTestEntityAssociationM2OsDc}
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity.NAME}
+            propertyName="readOnlyStringAttr"
+            disabled={true}
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
