@@ -1,8 +1,7 @@
 const localeCaptions = {
   en: "English",
   fr: "Français",
-  ru: "Русский",
-  "zh-cn": "中文"
+  ru: "Русский"
 };
 
 export default localeCaptions;

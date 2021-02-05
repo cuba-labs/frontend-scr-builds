@@ -14,7 +14,6 @@ import "./index.css";
 import { antdLocaleMapping, messagesMapping } from "./i18n/i18nMappings";
 import "moment/locale/ru";
 import "moment/locale/fr";
-import "moment/locale/zh-cn";
 
 export const cubaREST = initializeApp({
   name: "scr",
