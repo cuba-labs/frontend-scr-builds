@@ -6,8 +6,6 @@ import { Button, Input, message } from "antd";
 import { observer } from "mobx-react";
 import { action, observable } from "mobx";
 import { injectMainStore, MainStoreInjected } from "@cuba-platform/react-core";
-import { mapCubaRestErrorToIntlId } from "@cuba-platform/react-ui";
-import { CubaRestError } from "@cuba-platform/rest";
 import "./Login.css";
 import logo from "./logo.png";
 import { LanguageSwitcher } from "../../i18n/LanguageSwitcher";
@@ -45,24 +43,12 @@ class Login extends React.Component<MainStoreInjected & WrappedComponentProps> {
         })
       )
       .catch(
-        action((error: CubaRestError) => {
+        action(() => {
           this.performingLoginRequest = false;
-
-          const intlMessageId = mapCubaRestErrorToIntlId(
-            this.mapCubaRestErrorToIntlId,
-            error
-          );
-          message.error(this.props.intl.formatMessage({ id: intlMessageId }));
+          message.error(this.props.intl.formatMessage({ id: "login.failed" }));
         })
       );
   };
-
-  private mapCubaRestErrorToIntlId(error: CubaRestError): string | void {
-    switch (error?.response?.status) {
-      case 400:
-        return "login.failed";
-    }
-  }
 
   render() {
     return (
