@@ -10,7 +10,7 @@ export interface LanguageSwitcherProps {
 }
 
 export class LanguageSwitcher extends React.Component<LanguageSwitcherProps> {
-  localeOptions: string[] = ["en", "ru", "zh-cn", "fr"];
+  localeOptions: string[] = ["en", "fr", "ru"];
 
   handleChange = (locale: string) => {
     getMainStore().setLocale(locale);
