@@ -122,6 +122,7 @@ export type DatatypesTestEntityView<
       | "offsetTimeAttr"
       | "enumAttr"
       | "name"
+      | "readOnlyStringAttr"
       | "associationO2Oattr"
       | "associationO2Mattr"
       | "associationM2Oattr"
@@ -132,6 +133,5 @@ export type DatatypesTestEntityView<
       | "integerIdTestEntityAssociationM2MAttr"
       | "stringIdTestEntityAssociationO2O"
       | "stringIdTestEntityAssociationM2O"
-      | "readOnlyStringAttr"
     >
   : never;

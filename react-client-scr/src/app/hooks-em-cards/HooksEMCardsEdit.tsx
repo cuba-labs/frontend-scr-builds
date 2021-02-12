@@ -71,6 +71,7 @@ const FIELDS = [
   "offsetTimeAttr",
   "enumAttr",
   "name",
+  "readOnlyStringAttr",
   "associationO2Oattr",
   "associationM2Oattr",
   "associationM2Mattr",
@@ -79,8 +80,7 @@ const FIELDS = [
   "intIdentityIdTestEntityAssociationO2OAttr",
   "integerIdTestEntityAssociationM2MAttr",
   "stringIdTestEntityAssociationO2O",
-  "stringIdTestEntityAssociationM2O",
-  "readOnlyStringAttr"
+  "stringIdTestEntityAssociationM2O"
 ];
 
 const isNewEntity = (entityId: string) => {
@@ -432,6 +432,15 @@ const HooksEMCardsEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
+            propertyName="readOnlyStringAttr"
+            disabled={true}
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity.NAME}
             propertyName="associationO2Oattr"
             optionsContainer={store.associationO2OattrsDc}
             formItemProps={{
@@ -514,15 +523,6 @@ const HooksEMCardsEdit = (props: Props) => {
             entityName={DatatypesTestEntity.NAME}
             propertyName="stringIdTestEntityAssociationM2O"
             optionsContainer={store.stringIdTestEntityAssociationM2OsDc}
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
-          />
-
-          <Field
-            entityName={DatatypesTestEntity.NAME}
-            propertyName="readOnlyStringAttr"
-            disabled={true}
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
