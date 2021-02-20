@@ -12,7 +12,8 @@ import {
 } from "react-intl";
 import {
   defaultHandleFinish,
-  createAntdFormValidationMessages
+  createAntdFormValidationMessages,
+  Msg
 } from "@cuba-platform/react-ui";
 
 import {
@@ -152,15 +153,6 @@ class AssociationO2OEditComponent extends React.Component<
             }}
           />
 
-          <Field
-            entityName={AssociationO2OTestEntity.NAME}
-            propertyName="datatypesTestEntity"
-            optionsContainer={this.datatypesTestEntitysDc}
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
-          />
-
           {this.globalErrors.length > 0 && (
             <Alert
               message={<MultilineText lines={toJS(this.globalErrors)} />}
@@ -238,9 +230,13 @@ class AssociationO2OEditComponent extends React.Component<
               reaction(
                 () => this.dataInstance.item,
                 () => {
+                  console.log(this.dataInstance.getFieldValues(this.fields));
+
                   formRefCurrent.setFieldsValue(
                     this.dataInstance.getFieldValues(this.fields)
                   );
+
+                  console.log(formRefCurrent.getFieldsValue());
                 },
                 { fireImmediately: true }
               )

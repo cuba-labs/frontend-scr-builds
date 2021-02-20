@@ -12,7 +12,8 @@ import {
 } from "react-intl";
 import {
   defaultHandleFinish,
-  createAntdFormValidationMessages
+  createAntdFormValidationMessages,
+  Msg
 } from "@cuba-platform/react-ui";
 
 import {
@@ -189,9 +190,13 @@ class IntIdentityIdMgtTableEditComponent extends React.Component<
               reaction(
                 () => this.dataInstance.item,
                 () => {
+                  console.log(this.dataInstance.getFieldValues(this.fields));
+
                   formRefCurrent.setFieldsValue(
                     this.dataInstance.getFieldValues(this.fields)
                   );
+
+                  console.log(formRefCurrent.getFieldsValue());
                 },
                 { fireImmediately: true }
               )

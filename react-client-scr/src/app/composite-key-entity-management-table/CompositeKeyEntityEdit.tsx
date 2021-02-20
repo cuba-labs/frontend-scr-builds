@@ -12,7 +12,8 @@ import {
 } from "react-intl";
 import {
   defaultHandleFinish,
-  createAntdFormValidationMessages
+  createAntdFormValidationMessages,
+  Msg
 } from "@cuba-platform/react-ui";
 
 import {
@@ -47,7 +48,7 @@ class CompositeKeyEntityEditComponent extends React.Component<
   @observable formRef: React.RefObject<FormInstance> = React.createRef();
   reactionDisposers: IReactionDisposer[] = [];
 
-  fields = ["testfld"];
+  fields = ["testfld", "id.first_field.second_field.third_field"];
 
   @observable globalErrors: string[] = [];
 
@@ -124,6 +125,40 @@ class CompositeKeyEntityEditComponent extends React.Component<
             }}
           />
 
+          <Msg entityName={CompositeKeyEntity.NAME} propertyName="id" />
+          <div
+            style={{
+              border: "1px solid #d9d9d9",
+              borderRadius: 2,
+              padding: 10,
+              marginBottom: 12
+            }}
+          >
+            <Field
+              entityName={CompositeAttribute.NAME}
+              propertyName="first_field"
+              formItemProps={{
+                style: { marginBottom: "12px" }
+              }}
+            />
+
+            <Field
+              entityName={CompositeAttribute.NAME}
+              propertyName="second_field"
+              formItemProps={{
+                style: { marginBottom: "12px" }
+              }}
+            />
+
+            <Field
+              entityName={CompositeAttribute.NAME}
+              propertyName="third_field"
+              formItemProps={{
+                style: { marginBottom: "12px" }
+              }}
+            />
+          </div>
+
           {this.globalErrors.length > 0 && (
             <Alert
               message={<MultilineText lines={toJS(this.globalErrors)} />}
@@ -186,9 +221,13 @@ class CompositeKeyEntityEditComponent extends React.Component<
               reaction(
                 () => this.dataInstance.item,
                 () => {
+                  console.log(this.dataInstance.getFieldValues(this.fields));
+
                   formRefCurrent.setFieldsValue(
                     this.dataInstance.getFieldValues(this.fields)
                   );
+
+                  console.log(formRefCurrent.getFieldsValue());
                 },
                 { fireImmediately: true }
               )

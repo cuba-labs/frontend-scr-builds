@@ -12,7 +12,8 @@ import {
 } from "react-intl";
 import {
   defaultHandleFinish,
-  createAntdFormValidationMessages
+  createAntdFormValidationMessages,
+  Msg
 } from "@cuba-platform/react-ui";
 
 import {
@@ -47,7 +48,7 @@ class EmbeddedEntityEditComponent extends React.Component<
   @observable formRef: React.RefObject<FormInstance> = React.createRef();
   reactionDisposers: IReactionDisposer[] = [];
 
-  fields = ["ownAttribute"];
+  fields = ["ownAttribute", "embedded.name"];
 
   @observable globalErrors: string[] = [];
 
@@ -124,6 +125,24 @@ class EmbeddedEntityEditComponent extends React.Component<
             }}
           />
 
+          <Msg entityName={EmbeddedTestEntity.NAME} propertyName="embedded" />
+          <div
+            style={{
+              border: "1px solid #d9d9d9",
+              borderRadius: 2,
+              padding: 10,
+              marginBottom: 12
+            }}
+          >
+            <Field
+              entityName={EmbeddedEntity.NAME}
+              propertyName="name"
+              formItemProps={{
+                style: { marginBottom: "12px" }
+              }}
+            />
+          </div>
+
           {this.globalErrors.length > 0 && (
             <Alert
               message={<MultilineText lines={toJS(this.globalErrors)} />}
@@ -186,9 +205,13 @@ class EmbeddedEntityEditComponent extends React.Component<
               reaction(
                 () => this.dataInstance.item,
                 () => {
+                  console.log(this.dataInstance.getFieldValues(this.fields));
+
                   formRefCurrent.setFieldsValue(
                     this.dataInstance.getFieldValues(this.fields)
                   );
+
+                  console.log(formRefCurrent.getFieldsValue());
                 },
                 { fireImmediately: true }
               )

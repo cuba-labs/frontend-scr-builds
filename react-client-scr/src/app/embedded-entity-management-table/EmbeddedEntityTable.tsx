@@ -33,7 +33,7 @@ class EmbeddedEntityTableComponent extends React.Component<
   });
   @observable selectedRowKey: string | undefined;
 
-  fields = ["ownAttribute"];
+  fields = ["ownAttribute", "embedded"];
 
   showDeletionDialog = (e: SerializedEntity<EmbeddedTestEntity>) => {
     Modal.confirm({

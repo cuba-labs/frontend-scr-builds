@@ -12,7 +12,8 @@ import {
 } from "react-intl";
 import {
   defaultHandleFinish,
-  createAntdFormValidationMessages
+  createAntdFormValidationMessages,
+  Msg
 } from "@cuba-platform/react-ui";
 
 import {
@@ -131,76 +132,6 @@ class Datatypes3EditComponent extends React.Component<
             }}
           />
 
-          <Field
-            entityName={DatatypesTestEntity3.NAME}
-            propertyName="datatypesTestEntityAttr"
-            nestedEntityView="datatypesTestEntity-view"
-            parentEntityInstanceId={
-              this.props.entityId !== Datatypes3Management.NEW_SUBPATH
-                ? this.props.entityId
-                : undefined
-            }
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
-          />
-
-          <Field
-            entityName={DatatypesTestEntity3.NAME}
-            propertyName="integerIdTestEntityAttr"
-            nestedEntityView="_local"
-            parentEntityInstanceId={
-              this.props.entityId !== Datatypes3Management.NEW_SUBPATH
-                ? this.props.entityId
-                : undefined
-            }
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
-          />
-
-          <Field
-            entityName={DatatypesTestEntity3.NAME}
-            propertyName="intIdentityIdTestEntityAttr"
-            nestedEntityView="_local"
-            parentEntityInstanceId={
-              this.props.entityId !== Datatypes3Management.NEW_SUBPATH
-                ? this.props.entityId
-                : undefined
-            }
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
-          />
-
-          <Field
-            entityName={DatatypesTestEntity3.NAME}
-            propertyName="stringIdTestEntityAttr"
-            nestedEntityView="_local"
-            parentEntityInstanceId={
-              this.props.entityId !== Datatypes3Management.NEW_SUBPATH
-                ? this.props.entityId
-                : undefined
-            }
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
-          />
-
-          <Field
-            entityName={DatatypesTestEntity3.NAME}
-            propertyName="weirdStringIdTestEntityAttr"
-            nestedEntityView="_local"
-            parentEntityInstanceId={
-              this.props.entityId !== Datatypes3Management.NEW_SUBPATH
-                ? this.props.entityId
-                : undefined
-            }
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
-          />
-
           {this.globalErrors.length > 0 && (
             <Alert
               message={<MultilineText lines={toJS(this.globalErrors)} />}
@@ -263,9 +194,13 @@ class Datatypes3EditComponent extends React.Component<
               reaction(
                 () => this.dataInstance.item,
                 () => {
+                  console.log(this.dataInstance.getFieldValues(this.fields));
+
                   formRefCurrent.setFieldsValue(
                     this.dataInstance.getFieldValues(this.fields)
                   );
+
+                  console.log(formRefCurrent.getFieldsValue());
                 },
                 { fireImmediately: true }
               )
