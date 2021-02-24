@@ -12,8 +12,7 @@ import {
 } from "react-intl";
 import {
   defaultHandleFinish,
-  createAntdFormValidationMessages,
-  Msg
+  createAntdFormValidationMessages
 } from "@cuba-platform/react-ui";
 
 import {
@@ -229,6 +228,23 @@ class CarEditComponent extends React.Component<Props & WrappedComponentProps> {
 
           <Field
             entityName={Car.NAME}
+            propertyName="carType"
+            formItemProps={{
+              style: { marginBottom: "12px" },
+              rules: [{ required: true }]
+            }}
+          />
+
+          <Field
+            entityName={Car.NAME}
+            propertyName="ecoRank"
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={Car.NAME}
             propertyName="maxPassengers"
             formItemProps={{
               style: { marginBottom: "12px" }
@@ -246,6 +262,33 @@ class CarEditComponent extends React.Component<Props & WrappedComponentProps> {
           <Field
             entityName={Car.NAME}
             propertyName="mileage"
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={Car.NAME}
+            propertyName="garage"
+            optionsContainer={this.garagesDc}
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={Car.NAME}
+            propertyName="technicalCertificate"
+            optionsContainer={this.technicalCertificatesDc}
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={Car.NAME}
+            propertyName="photo"
+            optionsContainer={this.photosDc}
             formItemProps={{
               style: { marginBottom: "12px" }
             }}

@@ -12,8 +12,7 @@ import {
 } from "react-intl";
 import {
   defaultHandleFinish,
-  createAntdFormValidationMessages,
-  Msg
+  createAntdFormValidationMessages
 } from "@cuba-platform/react-ui";
 
 import {

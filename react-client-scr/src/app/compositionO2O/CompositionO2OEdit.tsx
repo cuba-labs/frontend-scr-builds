@@ -12,8 +12,7 @@ import {
 } from "react-intl";
 import {
   defaultHandleFinish,
-  createAntdFormValidationMessages,
-  Msg
+  createAntdFormValidationMessages
 } from "@cuba-platform/react-ui";
 
 import {
@@ -131,6 +130,20 @@ class CompositionO2OEditComponent extends React.Component<
           <Field
             entityName={CompositionO2OTestEntity.NAME}
             propertyName="quantity"
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={CompositionO2OTestEntity.NAME}
+            propertyName="nestedComposition"
+            nestedEntityView="deeplyNestedTestEntity-view"
+            parentEntityInstanceId={
+              this.props.entityId !== CompositionO2OManagement.NEW_SUBPATH
+                ? this.props.entityId
+                : undefined
+            }
             formItemProps={{
               style: { marginBottom: "12px" }
             }}

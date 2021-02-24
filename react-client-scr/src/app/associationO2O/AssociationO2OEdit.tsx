@@ -12,8 +12,7 @@ import {
 } from "react-intl";
 import {
   defaultHandleFinish,
-  createAntdFormValidationMessages,
-  Msg
+  createAntdFormValidationMessages
 } from "@cuba-platform/react-ui";
 
 import {
@@ -148,6 +147,15 @@ class AssociationO2OEditComponent extends React.Component<
           <Field
             entityName={AssociationO2OTestEntity.NAME}
             propertyName="name"
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={AssociationO2OTestEntity.NAME}
+            propertyName="datatypesTestEntity"
+            optionsContainer={this.datatypesTestEntitysDc}
             formItemProps={{
               style: { marginBottom: "12px" }
             }}

@@ -27,6 +27,7 @@ import { Field, MultilineText, Spinner } from "@cuba-platform/react-ui";
 import "../../app/App.css";
 
 import { EmbeddedTestEntity } from "../../cuba/entities/scr_EmbeddedTestEntity";
+import { EmbeddedEntity } from "../../cuba/entities/scr_EmbeddedEntity";
 
 type Props = EditorProps & MainStoreInjected;
 
@@ -128,7 +129,7 @@ class EmbeddedEntityEditComponent extends React.Component<
           <Msg entityName={EmbeddedTestEntity.NAME} propertyName="embedded" />
           <div
             style={{
-              border: "1px solid #d9d9d9",
+              border: "1px solid #f0f0f0",
               borderRadius: 2,
               padding: 10,
               marginBottom: 12

@@ -12,8 +12,7 @@ import {
 } from "react-intl";
 import {
   defaultHandleFinish,
-  createAntdFormValidationMessages,
-  Msg
+  createAntdFormValidationMessages
 } from "@cuba-platform/react-ui";
 
 import {
@@ -127,6 +126,76 @@ class Datatypes3EditComponent extends React.Component<
           <Field
             entityName={DatatypesTestEntity3.NAME}
             propertyName="name"
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity3.NAME}
+            propertyName="datatypesTestEntityAttr"
+            nestedEntityView="datatypesTestEntity-view"
+            parentEntityInstanceId={
+              this.props.entityId !== Datatypes3Management.NEW_SUBPATH
+                ? this.props.entityId
+                : undefined
+            }
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity3.NAME}
+            propertyName="integerIdTestEntityAttr"
+            nestedEntityView="_local"
+            parentEntityInstanceId={
+              this.props.entityId !== Datatypes3Management.NEW_SUBPATH
+                ? this.props.entityId
+                : undefined
+            }
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity3.NAME}
+            propertyName="intIdentityIdTestEntityAttr"
+            nestedEntityView="_local"
+            parentEntityInstanceId={
+              this.props.entityId !== Datatypes3Management.NEW_SUBPATH
+                ? this.props.entityId
+                : undefined
+            }
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity3.NAME}
+            propertyName="stringIdTestEntityAttr"
+            nestedEntityView="_local"
+            parentEntityInstanceId={
+              this.props.entityId !== Datatypes3Management.NEW_SUBPATH
+                ? this.props.entityId
+                : undefined
+            }
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity3.NAME}
+            propertyName="weirdStringIdTestEntityAttr"
+            nestedEntityView="_local"
+            parentEntityInstanceId={
+              this.props.entityId !== Datatypes3Management.NEW_SUBPATH
+                ? this.props.entityId
+                : undefined
+            }
             formItemProps={{
               style: { marginBottom: "12px" }
             }}

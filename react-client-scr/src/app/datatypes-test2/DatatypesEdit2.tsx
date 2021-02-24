@@ -12,8 +12,7 @@ import {
 } from "react-intl";
 import {
   defaultHandleFinish,
-  createAntdFormValidationMessages,
-  Msg
+  createAntdFormValidationMessages
 } from "@cuba-platform/react-ui";
 
 import {
@@ -370,6 +369,14 @@ class DatatypesEdit2Component extends React.Component<
 
           <Field
             entityName={DatatypesTestEntity.NAME}
+            propertyName="enumAttr"
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity.NAME}
             propertyName="name"
             formItemProps={{
               style: { marginBottom: "12px" }
@@ -380,6 +387,97 @@ class DatatypesEdit2Component extends React.Component<
             entityName={DatatypesTestEntity.NAME}
             propertyName="readOnlyStringAttr"
             disabled={true}
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity.NAME}
+            propertyName="associationO2Oattr"
+            optionsContainer={this.associationO2OattrsDc}
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity.NAME}
+            propertyName="associationM2Oattr"
+            optionsContainer={this.associationM2OattrsDc}
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity.NAME}
+            propertyName="associationM2Mattr"
+            optionsContainer={this.associationM2MattrsDc}
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity.NAME}
+            propertyName="compositionO2Oattr"
+            nestedEntityView="compositionO2OTestEntity-view"
+            parentEntityInstanceId={
+              this.props.entityId !== DatatypesManagement2.NEW_SUBPATH
+                ? this.props.entityId
+                : undefined
+            }
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity.NAME}
+            propertyName="compositionO2Mattr"
+            nestedEntityView="compositionO2MTestEntity-view"
+            parentEntityInstanceId={
+              this.props.entityId !== DatatypesManagement2.NEW_SUBPATH
+                ? this.props.entityId
+                : undefined
+            }
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity.NAME}
+            propertyName="intIdentityIdTestEntityAssociationO2OAttr"
+            optionsContainer={this.intIdentityIdTestEntityAssociationO2OAttrsDc}
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity.NAME}
+            propertyName="integerIdTestEntityAssociationM2MAttr"
+            optionsContainer={this.integerIdTestEntityAssociationM2MAttrsDc}
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity.NAME}
+            propertyName="stringIdTestEntityAssociationO2O"
+            optionsContainer={this.stringIdTestEntityAssociationO2OsDc}
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity.NAME}
+            propertyName="stringIdTestEntityAssociationM2O"
+            optionsContainer={this.stringIdTestEntityAssociationM2OsDc}
             formItemProps={{
               style: { marginBottom: "12px" }
             }}

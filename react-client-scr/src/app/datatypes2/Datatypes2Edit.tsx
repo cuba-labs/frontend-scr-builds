@@ -12,8 +12,7 @@ import {
 } from "react-intl";
 import {
   defaultHandleFinish,
-  createAntdFormValidationMessages,
-  Msg
+  createAntdFormValidationMessages
 } from "@cuba-platform/react-ui";
 
 import {
@@ -123,6 +122,76 @@ class Datatypes2EditComponent extends React.Component<
           ref={this.formRef}
           validateMessages={createAntdFormValidationMessages(intl)}
         >
+          <Field
+            entityName={DatatypesTestEntity2.NAME}
+            propertyName="datatypesTestEntityAttr"
+            nestedEntityView="datatypesTestEntity-view"
+            parentEntityInstanceId={
+              this.props.entityId !== Datatypes2Management.NEW_SUBPATH
+                ? this.props.entityId
+                : undefined
+            }
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity2.NAME}
+            propertyName="intIdentityIdTestEntityAttr"
+            nestedEntityView="_local"
+            parentEntityInstanceId={
+              this.props.entityId !== Datatypes2Management.NEW_SUBPATH
+                ? this.props.entityId
+                : undefined
+            }
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity2.NAME}
+            propertyName="integerIdTestEntityAttr"
+            nestedEntityView="_local"
+            parentEntityInstanceId={
+              this.props.entityId !== Datatypes2Management.NEW_SUBPATH
+                ? this.props.entityId
+                : undefined
+            }
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity2.NAME}
+            propertyName="stringIdTestEntityAttr"
+            nestedEntityView="_local"
+            parentEntityInstanceId={
+              this.props.entityId !== Datatypes2Management.NEW_SUBPATH
+                ? this.props.entityId
+                : undefined
+            }
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
+          <Field
+            entityName={DatatypesTestEntity2.NAME}
+            propertyName="weirdStringIdTestEntityAttr"
+            nestedEntityView="_local"
+            parentEntityInstanceId={
+              this.props.entityId !== Datatypes2Management.NEW_SUBPATH
+                ? this.props.entityId
+                : undefined
+            }
+            formItemProps={{
+              style: { marginBottom: "12px" }
+            }}
+          />
+
           {this.globalErrors.length > 0 && (
             <Alert
               message={<MultilineText lines={toJS(this.globalErrors)} />}
