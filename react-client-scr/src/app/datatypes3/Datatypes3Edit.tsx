@@ -263,13 +263,13 @@ class Datatypes3EditComponent extends React.Component<
               reaction(
                 () => this.dataInstance.item,
                 () => {
-                  console.log(this.dataInstance.getFieldValues(this.fields));
+                  // console.log(this.dataInstance.getFieldValues(this.fields))
 
                   formRefCurrent.setFieldsValue(
                     this.dataInstance.getFieldValues(this.fields)
                   );
 
-                  console.log(formRefCurrent.getFieldsValue());
+                  // console.log(formRefCurrent.getFieldsValue())
                 },
                 { fireImmediately: true }
               )

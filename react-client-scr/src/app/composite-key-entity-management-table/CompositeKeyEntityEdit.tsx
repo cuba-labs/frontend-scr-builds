@@ -49,7 +49,7 @@ class CompositeKeyEntityEditComponent extends React.Component<
   @observable formRef: React.RefObject<FormInstance> = React.createRef();
   reactionDisposers: IReactionDisposer[] = [];
 
-  fields = ["testfld", "id.first_field.second_field.third_field"];
+  fields = ["testfld", "id.first_field", "id.second_field", "id.third_field"];
 
   @observable globalErrors: string[] = [];
 
@@ -137,7 +137,7 @@ class CompositeKeyEntityEditComponent extends React.Component<
           >
             <Field
               entityName={CompositeAttribute.NAME}
-              propertyName="first_field"
+              propertyName="id.first_field"
               formItemProps={{
                 style: { marginBottom: "12px" }
               }}
@@ -145,7 +145,7 @@ class CompositeKeyEntityEditComponent extends React.Component<
 
             <Field
               entityName={CompositeAttribute.NAME}
-              propertyName="second_field"
+              propertyName="id.second_field"
               formItemProps={{
                 style: { marginBottom: "12px" }
               }}
@@ -153,7 +153,7 @@ class CompositeKeyEntityEditComponent extends React.Component<
 
             <Field
               entityName={CompositeAttribute.NAME}
-              propertyName="third_field"
+              propertyName="id.third_field"
               formItemProps={{
                 style: { marginBottom: "12px" }
               }}
@@ -222,13 +222,13 @@ class CompositeKeyEntityEditComponent extends React.Component<
               reaction(
                 () => this.dataInstance.item,
                 () => {
-                  console.log(this.dataInstance.getFieldValues(this.fields));
+                  // console.log(this.dataInstance.getFieldValues(this.fields))
 
                   formRefCurrent.setFieldsValue(
                     this.dataInstance.getFieldValues(this.fields)
                   );
 
-                  console.log(formRefCurrent.getFieldsValue());
+                  // console.log(formRefCurrent.getFieldsValue())
                 },
                 { fireImmediately: true }
               )
