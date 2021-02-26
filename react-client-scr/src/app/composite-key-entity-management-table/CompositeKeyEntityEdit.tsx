@@ -126,14 +126,11 @@ class CompositeKeyEntityEditComponent extends React.Component<
             }}
           />
 
-          <Msg entityName={CompositeKeyEntity.NAME} propertyName="id" />
-          <div
-            style={{
-              border: "1px solid #f0f0f0",
-              borderRadius: 2,
-              padding: 10,
-              marginBottom: 12
-            }}
+          <Card
+            size="small"
+            title={
+              <Msg entityName={CompositeKeyEntity.NAME} propertyName="id" />
+            }
           >
             <Field
               entityName={CompositeAttribute.NAME}
@@ -158,7 +155,7 @@ class CompositeKeyEntityEditComponent extends React.Component<
                 style: { marginBottom: "12px" }
               }}
             />
-          </div>
+          </Card>
 
           {this.globalErrors.length > 0 && (
             <Alert

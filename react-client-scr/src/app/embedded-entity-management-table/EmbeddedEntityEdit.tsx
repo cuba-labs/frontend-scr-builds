@@ -126,14 +126,14 @@ class EmbeddedEntityEditComponent extends React.Component<
             }}
           />
 
-          <Msg entityName={EmbeddedTestEntity.NAME} propertyName="embedded" />
-          <div
-            style={{
-              border: "1px solid #f0f0f0",
-              borderRadius: 2,
-              padding: 10,
-              marginBottom: 12
-            }}
+          <Card
+            size="small"
+            title={
+              <Msg
+                entityName={EmbeddedTestEntity.NAME}
+                propertyName="embedded"
+              />
+            }
           >
             <Field
               entityName={EmbeddedEntity.NAME}
@@ -142,7 +142,7 @@ class EmbeddedEntityEditComponent extends React.Component<
                 style: { marginBottom: "12px" }
               }}
             />
-          </div>
+          </Card>
 
           {this.globalErrors.length > 0 && (
             <Alert
