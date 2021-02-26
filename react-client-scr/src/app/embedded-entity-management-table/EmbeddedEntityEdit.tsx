@@ -120,7 +120,7 @@ class EmbeddedEntityEditComponent extends React.Component<
         >
           <Field
             entityName={EmbeddedTestEntity.NAME}
-            propertyName="ownAttribute"
+            stringPath="ownAttribute"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -137,7 +137,7 @@ class EmbeddedEntityEditComponent extends React.Component<
           >
             <Field
               entityName={EmbeddedEntity.NAME}
-              propertyName="embedded.name"
+              stringPath="embedded.name"
               formItemProps={{
                 style: { marginBottom: "12px" }
               }}

@@ -124,7 +124,7 @@ class Datatypes2EditComponent extends React.Component<
         >
           <Field
             entityName={DatatypesTestEntity2.NAME}
-            propertyName="datatypesTestEntityAttr"
+            stringPath="datatypesTestEntityAttr"
             nestedEntityView="datatypesTestEntity-view"
             parentEntityInstanceId={
               this.props.entityId !== Datatypes2Management.NEW_SUBPATH
@@ -138,7 +138,7 @@ class Datatypes2EditComponent extends React.Component<
 
           <Field
             entityName={DatatypesTestEntity2.NAME}
-            propertyName="intIdentityIdTestEntityAttr"
+            stringPath="intIdentityIdTestEntityAttr"
             nestedEntityView="_local"
             parentEntityInstanceId={
               this.props.entityId !== Datatypes2Management.NEW_SUBPATH
@@ -152,7 +152,7 @@ class Datatypes2EditComponent extends React.Component<
 
           <Field
             entityName={DatatypesTestEntity2.NAME}
-            propertyName="integerIdTestEntityAttr"
+            stringPath="integerIdTestEntityAttr"
             nestedEntityView="_local"
             parentEntityInstanceId={
               this.props.entityId !== Datatypes2Management.NEW_SUBPATH
@@ -166,7 +166,7 @@ class Datatypes2EditComponent extends React.Component<
 
           <Field
             entityName={DatatypesTestEntity2.NAME}
-            propertyName="stringIdTestEntityAttr"
+            stringPath="stringIdTestEntityAttr"
             nestedEntityView="_local"
             parentEntityInstanceId={
               this.props.entityId !== Datatypes2Management.NEW_SUBPATH
@@ -180,7 +180,7 @@ class Datatypes2EditComponent extends React.Component<
 
           <Field
             entityName={DatatypesTestEntity2.NAME}
-            propertyName="weirdStringIdTestEntityAttr"
+            stringPath="weirdStringIdTestEntityAttr"
             nestedEntityView="_local"
             parentEntityInstanceId={
               this.props.entityId !== Datatypes2Management.NEW_SUBPATH

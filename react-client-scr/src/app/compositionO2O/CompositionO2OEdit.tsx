@@ -121,7 +121,7 @@ class CompositionO2OEditComponent extends React.Component<
         >
           <Field
             entityName={CompositionO2OTestEntity.NAME}
-            propertyName="name"
+            stringPath="name"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -129,7 +129,7 @@ class CompositionO2OEditComponent extends React.Component<
 
           <Field
             entityName={CompositionO2OTestEntity.NAME}
-            propertyName="quantity"
+            stringPath="quantity"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -137,7 +137,7 @@ class CompositionO2OEditComponent extends React.Component<
 
           <Field
             entityName={CompositionO2OTestEntity.NAME}
-            propertyName="nestedComposition"
+            stringPath="nestedComposition"
             nestedEntityView="deeplyNestedTestEntity-view"
             parentEntityInstanceId={
               this.props.entityId !== CompositionO2OManagement.NEW_SUBPATH

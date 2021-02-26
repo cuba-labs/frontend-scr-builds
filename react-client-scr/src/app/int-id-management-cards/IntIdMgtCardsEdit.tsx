@@ -118,7 +118,7 @@ class IntIdMgtCardsEditComponent extends React.Component<
         >
           <Field
             entityName={IntegerIdTestEntity.NAME}
-            propertyName="description"
+            stringPath="description"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}

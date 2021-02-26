@@ -120,7 +120,7 @@ class CompositeKeyEntityEditComponent extends React.Component<
         >
           <Field
             entityName={CompositeKeyEntity.NAME}
-            propertyName="testfld"
+            stringPath="testfld"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -134,7 +134,7 @@ class CompositeKeyEntityEditComponent extends React.Component<
           >
             <Field
               entityName={CompositeAttribute.NAME}
-              propertyName="id.first_field"
+              stringPath="id.first_field"
               formItemProps={{
                 style: { marginBottom: "12px" }
               }}
@@ -142,7 +142,7 @@ class CompositeKeyEntityEditComponent extends React.Component<
 
             <Field
               entityName={CompositeAttribute.NAME}
-              propertyName="id.second_field"
+              stringPath="id.second_field"
               formItemProps={{
                 style: { marginBottom: "12px" }
               }}
@@ -150,7 +150,7 @@ class CompositeKeyEntityEditComponent extends React.Component<
 
             <Field
               entityName={CompositeAttribute.NAME}
-              propertyName="id.third_field"
+              stringPath="id.third_field"
               formItemProps={{
                 style: { marginBottom: "12px" }
               }}
