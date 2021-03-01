@@ -122,7 +122,7 @@ class BoringStringIdMgtTableEditComponent extends React.Component<
         >
           <Field
             entityName={BoringStringIdTestEntity.NAME}
-            stringPath="description"
+            propertyName="description"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -130,7 +130,7 @@ class BoringStringIdMgtTableEditComponent extends React.Component<
 
           <Field
             entityName={BoringStringIdTestEntity.NAME}
-            stringPath="id"
+            propertyName="id"
             disabled={!this.isNewEntity()}
             formItemProps={{
               style: { marginBottom: "12px" },

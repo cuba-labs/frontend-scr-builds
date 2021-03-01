@@ -178,7 +178,7 @@ class CarEdit3Component extends React.Component<Props & WrappedComponentProps> {
         >
           <Field
             entityName={Car.NAME}
-            stringPath="manufacturer"
+            propertyName="manufacturer"
             formItemProps={{
               style: { marginBottom: "12px" },
               rules: [{ required: true }]
@@ -187,7 +187,7 @@ class CarEdit3Component extends React.Component<Props & WrappedComponentProps> {
 
           <Field
             entityName={Car.NAME}
-            stringPath="model"
+            propertyName="model"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -195,7 +195,7 @@ class CarEdit3Component extends React.Component<Props & WrappedComponentProps> {
 
           <Field
             entityName={Car.NAME}
-            stringPath="regNumber"
+            propertyName="regNumber"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -203,7 +203,7 @@ class CarEdit3Component extends React.Component<Props & WrappedComponentProps> {
 
           <Field
             entityName={Car.NAME}
-            stringPath="purchaseDate"
+            propertyName="purchaseDate"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -211,7 +211,7 @@ class CarEdit3Component extends React.Component<Props & WrappedComponentProps> {
 
           <Field
             entityName={Car.NAME}
-            stringPath="manufactureDate"
+            propertyName="manufactureDate"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -219,7 +219,7 @@ class CarEdit3Component extends React.Component<Props & WrappedComponentProps> {
 
           <Field
             entityName={Car.NAME}
-            stringPath="wheelOnRight"
+            propertyName="wheelOnRight"
             formItemProps={{
               style: { marginBottom: "12px" },
               valuePropName: "checked"
@@ -228,7 +228,7 @@ class CarEdit3Component extends React.Component<Props & WrappedComponentProps> {
 
           <Field
             entityName={Car.NAME}
-            stringPath="carType"
+            propertyName="carType"
             formItemProps={{
               style: { marginBottom: "12px" },
               rules: [{ required: true }]
@@ -237,7 +237,7 @@ class CarEdit3Component extends React.Component<Props & WrappedComponentProps> {
 
           <Field
             entityName={Car.NAME}
-            stringPath="ecoRank"
+            propertyName="ecoRank"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -245,7 +245,7 @@ class CarEdit3Component extends React.Component<Props & WrappedComponentProps> {
 
           <Field
             entityName={Car.NAME}
-            stringPath="maxPassengers"
+            propertyName="maxPassengers"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -253,7 +253,7 @@ class CarEdit3Component extends React.Component<Props & WrappedComponentProps> {
 
           <Field
             entityName={Car.NAME}
-            stringPath="price"
+            propertyName="price"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -261,7 +261,7 @@ class CarEdit3Component extends React.Component<Props & WrappedComponentProps> {
 
           <Field
             entityName={Car.NAME}
-            stringPath="mileage"
+            propertyName="mileage"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -269,7 +269,7 @@ class CarEdit3Component extends React.Component<Props & WrappedComponentProps> {
 
           <Field
             entityName={Car.NAME}
-            stringPath="garage"
+            propertyName="garage"
             optionsContainer={this.garagesDc}
             formItemProps={{
               style: { marginBottom: "12px" }
@@ -278,7 +278,7 @@ class CarEdit3Component extends React.Component<Props & WrappedComponentProps> {
 
           <Field
             entityName={Car.NAME}
-            stringPath="technicalCertificate"
+            propertyName="technicalCertificate"
             optionsContainer={this.technicalCertificatesDc}
             formItemProps={{
               style: { marginBottom: "12px" }
@@ -287,7 +287,7 @@ class CarEdit3Component extends React.Component<Props & WrappedComponentProps> {
 
           <Field
             entityName={Car.NAME}
-            stringPath="photo"
+            propertyName="photo"
             optionsContainer={this.photosDc}
             formItemProps={{
               style: { marginBottom: "12px" }

@@ -1,4 +1,3 @@
-import { EmbeddedEntityManagement } from "./app/embedded-entity-management-table/EmbeddedEntityManagement";
 import { CompositeKeyEntityManagement } from "./app/composite-key-entity-management-table/CompositeKeyEntityManagement";
 import { BoringStringIdManagementTable } from "./app/boring-string-id-management-table/BoringStringIdManagementTable";
 import { WeirdStringIdMgtTableManagement } from "./app/weird-string-id-management-table/WeirdStringIdMgtTableManagement";
@@ -300,11 +299,4 @@ menuItems.push({
   menuLink: "/compositeKeyEntityManagement",
   component: CompositeKeyEntityManagement,
   caption: "CompositeKeyEntityManagement"
-});
-
-menuItems.push({
-  pathPattern: "/embeddedEntityManagement/:entityId?",
-  menuLink: "/embeddedEntityManagement",
-  component: EmbeddedEntityManagement,
-  caption: "EmbeddedEntityManagement"
 });

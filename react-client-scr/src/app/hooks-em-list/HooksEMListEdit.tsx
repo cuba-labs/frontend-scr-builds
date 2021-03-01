@@ -295,7 +295,7 @@ const HooksEMListEdit = (props: Props) => {
         >
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="bigDecimalAttr"
+            propertyName="bigDecimalAttr"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -303,7 +303,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="booleanAttr"
+            propertyName="booleanAttr"
             formItemProps={{
               style: { marginBottom: "12px" },
               valuePropName: "checked"
@@ -312,7 +312,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="dateAttr"
+            propertyName="dateAttr"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -320,7 +320,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="dateTimeAttr"
+            propertyName="dateTimeAttr"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -328,7 +328,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="doubleAttr"
+            propertyName="doubleAttr"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -336,7 +336,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="integerAttr"
+            propertyName="integerAttr"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -344,7 +344,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="longAttr"
+            propertyName="longAttr"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -352,7 +352,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="stringAttr"
+            propertyName="stringAttr"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -360,7 +360,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="timeAttr"
+            propertyName="timeAttr"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -368,7 +368,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="uuidAttr"
+            propertyName="uuidAttr"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -376,7 +376,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="localDateTimeAttr"
+            propertyName="localDateTimeAttr"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -384,7 +384,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="offsetDateTimeAttr"
+            propertyName="offsetDateTimeAttr"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -392,7 +392,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="localDateAttr"
+            propertyName="localDateAttr"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -400,7 +400,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="localTimeAttr"
+            propertyName="localTimeAttr"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -408,7 +408,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="offsetTimeAttr"
+            propertyName="offsetTimeAttr"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -416,7 +416,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="enumAttr"
+            propertyName="enumAttr"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -424,7 +424,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="name"
+            propertyName="name"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -432,7 +432,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="readOnlyStringAttr"
+            propertyName="readOnlyStringAttr"
             disabled={true}
             formItemProps={{
               style: { marginBottom: "12px" }
@@ -441,7 +441,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="associationO2Oattr"
+            propertyName="associationO2Oattr"
             optionsContainer={store.associationO2OattrsDc}
             formItemProps={{
               style: { marginBottom: "12px" }
@@ -450,7 +450,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="associationM2Oattr"
+            propertyName="associationM2Oattr"
             optionsContainer={store.associationM2OattrsDc}
             formItemProps={{
               style: { marginBottom: "12px" }
@@ -459,7 +459,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="associationM2Mattr"
+            propertyName="associationM2Mattr"
             optionsContainer={store.associationM2MattrsDc}
             formItemProps={{
               style: { marginBottom: "12px" }
@@ -468,7 +468,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="compositionO2Oattr"
+            propertyName="compositionO2Oattr"
             nestedEntityView="compositionO2OTestEntity-view"
             parentEntityInstanceId={
               entityId !== NEW_SUBPATH ? entityId : undefined
@@ -480,7 +480,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="compositionO2Mattr"
+            propertyName="compositionO2Mattr"
             nestedEntityView="compositionO2MTestEntity-view"
             parentEntityInstanceId={
               entityId !== NEW_SUBPATH ? entityId : undefined
@@ -492,7 +492,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="intIdentityIdTestEntityAssociationO2OAttr"
+            propertyName="intIdentityIdTestEntityAssociationO2OAttr"
             optionsContainer={
               store.intIdentityIdTestEntityAssociationO2OAttrsDc
             }
@@ -503,7 +503,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="integerIdTestEntityAssociationM2MAttr"
+            propertyName="integerIdTestEntityAssociationM2MAttr"
             optionsContainer={store.integerIdTestEntityAssociationM2MAttrsDc}
             formItemProps={{
               style: { marginBottom: "12px" }
@@ -512,7 +512,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="stringIdTestEntityAssociationO2O"
+            propertyName="stringIdTestEntityAssociationO2O"
             optionsContainer={store.stringIdTestEntityAssociationO2OsDc}
             formItemProps={{
               style: { marginBottom: "12px" }
@@ -521,7 +521,7 @@ const HooksEMListEdit = (props: Props) => {
 
           <Field
             entityName={DatatypesTestEntity.NAME}
-            stringPath="stringIdTestEntityAssociationM2O"
+            propertyName="stringIdTestEntityAssociationM2O"
             optionsContainer={store.stringIdTestEntityAssociationM2OsDc}
             formItemProps={{
               style: { marginBottom: "12px" }

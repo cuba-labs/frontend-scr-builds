@@ -146,7 +146,7 @@ class AssociationM2MEditComponent extends React.Component<
         >
           <Field
             entityName={AssociationM2MTestEntity.NAME}
-            stringPath="name"
+            propertyName="name"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -154,7 +154,7 @@ class AssociationM2MEditComponent extends React.Component<
 
           <Field
             entityName={AssociationM2MTestEntity.NAME}
-            stringPath="datatypesTestEntities"
+            propertyName="datatypesTestEntities"
             optionsContainer={this.datatypesTestEntitiessDc}
             formItemProps={{
               style: { marginBottom: "12px" }
