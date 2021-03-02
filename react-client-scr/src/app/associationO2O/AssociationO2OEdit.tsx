@@ -146,7 +146,7 @@ class AssociationO2OEditComponent extends React.Component<
         >
           <Field
             entityName={AssociationO2OTestEntity.NAME}
-            propertyName="name"
+            stringPath="name"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -154,7 +154,7 @@ class AssociationO2OEditComponent extends React.Component<
 
           <Field
             entityName={AssociationO2OTestEntity.NAME}
-            propertyName="datatypesTestEntity"
+            stringPath="datatypesTestEntity"
             optionsContainer={this.datatypesTestEntitysDc}
             formItemProps={{
               style: { marginBottom: "12px" }

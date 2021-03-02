@@ -121,7 +121,7 @@ class IntIdentityIdMgtListEditComponent extends React.Component<
         >
           <Field
             entityName={IntIdentityIdTestEntity.NAME}
-            propertyName="description"
+            stringPath="description"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
