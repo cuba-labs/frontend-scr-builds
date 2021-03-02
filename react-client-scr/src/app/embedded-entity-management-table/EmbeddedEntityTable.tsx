@@ -28,7 +28,7 @@ class EmbeddedEntityTableComponent extends React.Component<
   MainStoreInjected & WrappedComponentProps
 > {
   dataCollection = collection<EmbeddedTestEntity>(EmbeddedTestEntity.NAME, {
-    view: "_local",
+    view: "embeddedTestEntity-withEmbedded",
     sort: "-updateTs"
   });
   @observable selectedRowKey: string | undefined;

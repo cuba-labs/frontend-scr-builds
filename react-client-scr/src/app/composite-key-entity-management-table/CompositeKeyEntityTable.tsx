@@ -32,7 +32,7 @@ class CompositeKeyEntityTableComponent extends React.Component<
   });
   @observable selectedRowKey: string | undefined;
 
-  fields = ["testfld", "id"];
+  fields = ["testfld"];
 
   showDeletionDialog = (e: SerializedEntity<CompositeKeyEntity>) => {
     Modal.confirm({

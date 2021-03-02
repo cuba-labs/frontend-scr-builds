@@ -41,7 +41,7 @@ class EmbeddedEntityEditComponent extends React.Component<
   Props & WrappedComponentProps
 > {
   dataInstance = instance<EmbeddedTestEntity>(EmbeddedTestEntity.NAME, {
-    view: "_local",
+    view: "embeddedTestEntity-withEmbedded",
     loadImmediately: false
   });
 
@@ -127,6 +127,7 @@ class EmbeddedEntityEditComponent extends React.Component<
           />
 
           <Card
+            style={{ marginBottom: 12 }}
             size="small"
             title={
               <Msg

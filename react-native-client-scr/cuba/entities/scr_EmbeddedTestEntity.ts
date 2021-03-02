@@ -4,11 +4,17 @@ export class EmbeddedTestEntity extends StandardEntity {
   ownAttribute?: string | null;
   embedded?: any | null;
 }
-export type EmbeddedTestEntityViewName = "_base" | "_local" | "_minimal";
+export type EmbeddedTestEntityViewName =
+  | "_base"
+  | "_local"
+  | "_minimal"
+  | "embeddedTestEntity-withEmbedded";
 export type EmbeddedTestEntityView<
   V extends EmbeddedTestEntityViewName
 > = V extends "_base"
   ? Pick<EmbeddedTestEntity, "id" | "ownAttribute">
   : V extends "_local"
   ? Pick<EmbeddedTestEntity, "id" | "ownAttribute">
+  : V extends "embeddedTestEntity-withEmbedded"
+  ? Pick<EmbeddedTestEntity, "id" | "ownAttribute" | "embedded">
   : never;
