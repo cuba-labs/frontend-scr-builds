@@ -12,8 +12,7 @@ import {
 } from "react-intl";
 import {
   defaultHandleFinish,
-  createAntdFormValidationMessages,
-  Msg
+  createAntdFormValidationMessages
 } from "@cuba-platform/react-ui";
 
 import {
@@ -27,7 +26,6 @@ import { Field, MultilineText, Spinner } from "@cuba-platform/react-ui";
 import "../../app/App.css";
 
 import { CompositeKeyEntity } from "../../cuba/entities/scr_CompositeKeyEntity";
-import { CompositeAttribute } from "../../cuba/entities/scr_CompositeAttribute";
 
 type Props = EditorProps & MainStoreInjected;
 
@@ -49,7 +47,7 @@ class CompositeKeyEntityEditComponent extends React.Component<
   @observable formRef: React.RefObject<FormInstance> = React.createRef();
   reactionDisposers: IReactionDisposer[] = [];
 
-  fields = ["testfld", "id.first_field", "id.second_field", "id.third_field"];
+  fields = ["testfld"];
 
   @observable globalErrors: string[] = [];
 
@@ -120,42 +118,11 @@ class CompositeKeyEntityEditComponent extends React.Component<
         >
           <Field
             entityName={CompositeKeyEntity.NAME}
-            stringPath="testfld"
+            propertyName="testfld"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
           />
-
-          <Card
-            size="small"
-            title={
-              <Msg entityName={CompositeKeyEntity.NAME} propertyName="id" />
-            }
-          >
-            <Field
-              entityName={CompositeAttribute.NAME}
-              stringPath="id.first_field"
-              formItemProps={{
-                style: { marginBottom: "12px" }
-              }}
-            />
-
-            <Field
-              entityName={CompositeAttribute.NAME}
-              stringPath="id.second_field"
-              formItemProps={{
-                style: { marginBottom: "12px" }
-              }}
-            />
-
-            <Field
-              entityName={CompositeAttribute.NAME}
-              stringPath="id.third_field"
-              formItemProps={{
-                style: { marginBottom: "12px" }
-              }}
-            />
-          </Card>
 
           {this.globalErrors.length > 0 && (
             <Alert

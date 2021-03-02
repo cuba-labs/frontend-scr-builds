@@ -146,7 +146,7 @@ class CompositionO2MEditComponent extends React.Component<
         >
           <Field
             entityName={CompositionO2MTestEntity.NAME}
-            stringPath="quantity"
+            propertyName="quantity"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -154,7 +154,7 @@ class CompositionO2MEditComponent extends React.Component<
 
           <Field
             entityName={CompositionO2MTestEntity.NAME}
-            stringPath="name"
+            propertyName="name"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -162,7 +162,7 @@ class CompositionO2MEditComponent extends React.Component<
 
           <Field
             entityName={CompositionO2MTestEntity.NAME}
-            stringPath="datatypesTestEntity"
+            propertyName="datatypesTestEntity"
             optionsContainer={this.datatypesTestEntitysDc}
             formItemProps={{
               style: { marginBottom: "12px" }

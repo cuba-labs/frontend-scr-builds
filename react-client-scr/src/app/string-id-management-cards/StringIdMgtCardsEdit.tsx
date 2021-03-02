@@ -119,7 +119,7 @@ class StringIdMgtCardsEditComponent extends React.Component<
         >
           <Field
             entityName={StringIdTestEntity.NAME}
-            stringPath="description"
+            propertyName="description"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -127,7 +127,7 @@ class StringIdMgtCardsEditComponent extends React.Component<
 
           <Field
             entityName={StringIdTestEntity.NAME}
-            stringPath="identifier"
+            propertyName="identifier"
             disabled={!this.isNewEntity()}
             formItemProps={{
               style: { marginBottom: "12px" },
@@ -137,7 +137,7 @@ class StringIdMgtCardsEditComponent extends React.Component<
 
           <Field
             entityName={StringIdTestEntity.NAME}
-            stringPath="productCode"
+            propertyName="productCode"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
