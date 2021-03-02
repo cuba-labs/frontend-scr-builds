@@ -5,6 +5,7 @@
   "management.editor.validationError": "Validation Error. Please check the data you entered.",
   "management.editor.success": "Entity has been updated",
   "management.editor.error": "Error",
+  "router.EmbeddedEntityManagement": "Embedded Entity Management",
   "router.CompositeKeyEntityManagement": "Composite Key Entity Management",
   "router.BoringStringIdManagementTable": "Boring String Id Management Table",
   "router.WeirdStringIdMgtTableManagement": "Weird String Id Mgt Table Management",

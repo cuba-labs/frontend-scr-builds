@@ -121,7 +121,7 @@ class AssociationM2OEditComponent extends React.Component<
         >
           <Field
             entityName={AssociationM2OTestEntity.NAME}
-            propertyName="name"
+            stringPath="name"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
