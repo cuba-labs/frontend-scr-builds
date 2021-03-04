@@ -122,7 +122,7 @@ class WeirdStringIdMgtListEditComponent extends React.Component<
         >
           <Field
             entityName={WeirdStringIdTestEntity.NAME}
-            stringPath="description"
+            propertyName="description"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -130,7 +130,7 @@ class WeirdStringIdMgtListEditComponent extends React.Component<
 
           <Field
             entityName={WeirdStringIdTestEntity.NAME}
-            stringPath="identifier"
+            propertyName="identifier"
             disabled={!this.isNewEntity()}
             formItemProps={{
               style: { marginBottom: "12px" },

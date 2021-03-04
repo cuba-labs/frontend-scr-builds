@@ -14,7 +14,7 @@ import {
 import { DataTable, Spinner } from "@cuba-platform/react-ui";
 
 import { AssociationM2MTestEntity } from "../../cuba/entities/scr_AssociationM2MTestEntity";
-import { SerializedEntity } from "@cuba-platform/rest";
+import { SerializedEntity, getStringId } from "@cuba-platform/rest";
 import { AssociationM2MManagement } from "./AssociationM2MManagement";
 import {
   FormattedMessage,
@@ -130,7 +130,9 @@ class AssociationM2MBrowseComponent extends React.Component<
   getRecordById(id: string): SerializedEntity<AssociationM2MTestEntity> {
     const record:
       | SerializedEntity<AssociationM2MTestEntity>
-      | undefined = this.dataCollection.items.find(record => record.id === id);
+      | undefined = this.dataCollection.items.find(
+      record => getStringId(record.id!) === id
+    );
 
     if (!record) {
       throw new Error("Cannot find entity with id " + id);

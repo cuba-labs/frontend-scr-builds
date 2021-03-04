@@ -1,5 +1,6 @@
-import { EmbeddedEntityManagement } from "./app/embedded-entity-management-table/EmbeddedEntityManagement";
-import { CompositeKeyEntityManagement } from "./app/composite-key-entity-management-table/CompositeKeyEntityManagement";
+import { CompositeKeyEntityManagement3 } from "./app/composite-key-entity-cards/CompositeKeyEntityManagement3";
+import { CompositeKeyEntityManagement2 } from "./app/composite-key-entity-list/CompositeKeyEntityManagement2";
+import { CompositeKeyEntityManagement1 } from "./app/composite-key-entity-management-table/CompositeKeyEntityManagement1";
 import { BoringStringIdManagementTable } from "./app/boring-string-id-management-table/BoringStringIdManagementTable";
 import { WeirdStringIdMgtTableManagement } from "./app/weird-string-id-management-table/WeirdStringIdMgtTableManagement";
 import { WeirdStringIdMgtListManagement } from "./app/weird-string-id-management-list/WeirdStringIdMgtListManagement";
@@ -296,15 +297,22 @@ menuItems.push({
 });
 
 menuItems.push({
-  pathPattern: "/compositeKeyEntityManagement/:entityId?",
-  menuLink: "/compositeKeyEntityManagement",
-  component: CompositeKeyEntityManagement,
-  caption: "CompositeKeyEntityManagement"
+  pathPattern: "/compositeKeyEntityManagement1/:entityId?",
+  menuLink: "/compositeKeyEntityManagement1",
+  component: CompositeKeyEntityManagement1,
+  caption: "CompositeKeyEntityManagement1"
 });
 
 menuItems.push({
-  pathPattern: "/embeddedEntityManagement/:entityId?",
-  menuLink: "/embeddedEntityManagement",
-  component: EmbeddedEntityManagement,
-  caption: "EmbeddedEntityManagement"
+  pathPattern: "/compositeKeyEntityManagement2/:entityId?",
+  menuLink: "/compositeKeyEntityManagement2",
+  component: CompositeKeyEntityManagement2,
+  caption: "CompositeKeyEntityManagement2"
+});
+
+menuItems.push({
+  pathPattern: "/compositeKeyEntityManagement3/:entityId?",
+  menuLink: "/compositeKeyEntityManagement3",
+  component: CompositeKeyEntityManagement3,
+  caption: "CompositeKeyEntityManagement3"
 });

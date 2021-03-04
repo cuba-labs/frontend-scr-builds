@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import { Link } from "react-router-dom";
 import { IReactionDisposer, reaction } from "mobx";
 import { DeleteOutlined, EditOutlined, PlusOutlined } from "@ant-design/icons";
-import { Modal, Button, Card, message } from "antd";
+import { Modal, Button, List, message } from "antd";
 
 import {
   collection,
@@ -18,9 +18,9 @@ import {
   Spinner
 } from "@cuba-platform/react-ui";
 
-import { WeirdStringIdTestEntity } from "../../cuba/entities/scr_WeirdStringIdTestEntity";
+import { CompositeKeyEntity } from "../../cuba/entities/scr_CompositeKeyEntity";
 import { SerializedEntity, getStringId } from "@cuba-platform/rest";
-import { WeirdStringIdMgtCardsManagement } from "./WeirdStringIdMgtCardsManagement";
+import { CompositeKeyEntityManagement2 } from "./CompositeKeyEntityManagement2";
 import {
   FormattedMessage,
   injectIntl,
@@ -33,22 +33,17 @@ type Props = MainStoreInjected &
     paginationConfig: PaginationConfig;
     onPagingChange: (current: number, pageSize: number) => void;
   };
+
 @injectMainStore
 @observer
-class WeirdStringIdMgtCardsBrowseComponent extends React.Component<Props> {
-  dataCollection = collection<WeirdStringIdTestEntity>(
-    WeirdStringIdTestEntity.NAME,
-    {
-      view: "_local",
-      sort: "-updateTs",
-      loadImmediately: false,
-
-      stringIdName: "identifier"
-    }
-  );
+class CompositeKeyEntityListComponent extends React.Component<Props> {
+  dataCollection = collection<CompositeKeyEntity>(CompositeKeyEntity.NAME, {
+    view: "_local",
+    loadImmediately: false
+  });
 
   reactionDisposers: IReactionDisposer[] = [];
-  fields = ["description", "id", "identifier"];
+  fields = ["testfld"];
 
   componentDidMount(): void {
     this.reactionDisposers.push(
@@ -77,7 +72,7 @@ class WeirdStringIdMgtCardsBrowseComponent extends React.Component<Props> {
     this.reactionDisposers.forEach(dispose => dispose());
   }
 
-  showDeletionDialog = (e: SerializedEntity<WeirdStringIdTestEntity>) => {
+  showDeletionDialog = (e: SerializedEntity<CompositeKeyEntity>) => {
     Modal.confirm({
       title: this.props.intl.formatMessage(
         { id: "management.browser.delete.areYouSure" },
@@ -104,15 +99,15 @@ class WeirdStringIdMgtCardsBrowseComponent extends React.Component<Props> {
     return (
       <div className="narrow-layout">
         <EntityPermAccessControl
-          entityName={WeirdStringIdTestEntity.NAME}
+          entityName={CompositeKeyEntity.NAME}
           operation="create"
         >
           <div style={{ marginBottom: "12px" }}>
             <Link
               to={
-                WeirdStringIdMgtCardsManagement.PATH +
+                CompositeKeyEntityManagement2.PATH +
                 "/" +
-                WeirdStringIdMgtCardsManagement.NEW_SUBPATH
+                CompositeKeyEntityManagement2.NEW_SUBPATH
               }
             >
               <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
@@ -124,43 +119,42 @@ class WeirdStringIdMgtCardsBrowseComponent extends React.Component<Props> {
           </div>
         </EntityPermAccessControl>
 
-        {items == null || items.length === 0 ? (
-          <p>
-            <FormattedMessage id="management.browser.noItems" />
-          </p>
-        ) : null}
-        {items.map(e => (
-          <Card
-            title={e._instanceName}
-            key={e.id ? getStringId(e.id) : undefined}
-            style={{ marginBottom: "12px" }}
-            actions={[
-              <DeleteOutlined
-                key="delete"
-                onClick={() => this.showDeletionDialog(e)}
-              />,
-              <Link
-                to={
-                  WeirdStringIdMgtCardsManagement.PATH +
-                  "/" +
-                  getStringId(e.id!)
-                }
-                key="edit"
-              >
-                <EditOutlined />
-              </Link>
-            ]}
-          >
-            {this.fields.map(p => (
-              <EntityProperty
-                entityName={WeirdStringIdTestEntity.NAME}
-                propertyName={p}
-                value={e[p]}
-                key={p}
-              />
-            ))}
-          </Card>
-        ))}
+        <List
+          itemLayout="horizontal"
+          bordered
+          dataSource={items}
+          renderItem={item => (
+            <List.Item
+              actions={[
+                <DeleteOutlined
+                  key="delete"
+                  onClick={() => this.showDeletionDialog(item)}
+                />,
+                <Link
+                  to={
+                    CompositeKeyEntityManagement2.PATH +
+                    "/" +
+                    getStringId(item.id!)
+                  }
+                  key="edit"
+                >
+                  <EditOutlined />
+                </Link>
+              ]}
+            >
+              <div style={{ flexGrow: 1 }}>
+                {this.fields.map(p => (
+                  <EntityProperty
+                    entityName={CompositeKeyEntity.NAME}
+                    propertyName={p}
+                    value={item[p]}
+                    key={p}
+                  />
+                ))}
+              </div>
+            </List.Item>
+          )}
+        />
 
         {!this.props.paginationConfig.disabled && (
           <div style={{ margin: "12px 0 12px 0", float: "right" }}>
@@ -176,8 +170,6 @@ class WeirdStringIdMgtCardsBrowseComponent extends React.Component<Props> {
   }
 }
 
-const WeirdStringIdMgtCardsBrowse = injectIntl(
-  WeirdStringIdMgtCardsBrowseComponent
-);
+const CompositeKeyEntityList = injectIntl(CompositeKeyEntityListComponent);
 
-export default WeirdStringIdMgtCardsBrowse;
+export default CompositeKeyEntityList;

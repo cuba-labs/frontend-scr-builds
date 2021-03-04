@@ -1,7 +1,7 @@
 import { BaseGenericIdEntity } from "./base/sys$BaseGenericIdEntity";
 export class CompositeKeyEntity extends BaseGenericIdEntity {
   static NAME = "scr_CompositeKeyEntity";
-  id?: string;
+  id?: object;
   testfld?: string | null;
   uuid?: any | null;
 }

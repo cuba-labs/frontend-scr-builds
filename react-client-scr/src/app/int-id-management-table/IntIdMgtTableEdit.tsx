@@ -118,7 +118,7 @@ class IntIdMgtTableEditComponent extends React.Component<
         >
           <Field
             entityName={IntegerIdTestEntity.NAME}
-            stringPath="description"
+            propertyName="description"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}

@@ -125,7 +125,7 @@ class Datatypes3EditComponent extends React.Component<
         >
           <Field
             entityName={DatatypesTestEntity3.NAME}
-            stringPath="name"
+            propertyName="name"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -133,7 +133,7 @@ class Datatypes3EditComponent extends React.Component<
 
           <Field
             entityName={DatatypesTestEntity3.NAME}
-            stringPath="datatypesTestEntityAttr"
+            propertyName="datatypesTestEntityAttr"
             nestedEntityView="datatypesTestEntity-view"
             parentEntityInstanceId={
               this.props.entityId !== Datatypes3Management.NEW_SUBPATH
@@ -147,7 +147,7 @@ class Datatypes3EditComponent extends React.Component<
 
           <Field
             entityName={DatatypesTestEntity3.NAME}
-            stringPath="integerIdTestEntityAttr"
+            propertyName="integerIdTestEntityAttr"
             nestedEntityView="_local"
             parentEntityInstanceId={
               this.props.entityId !== Datatypes3Management.NEW_SUBPATH
@@ -161,7 +161,7 @@ class Datatypes3EditComponent extends React.Component<
 
           <Field
             entityName={DatatypesTestEntity3.NAME}
-            stringPath="intIdentityIdTestEntityAttr"
+            propertyName="intIdentityIdTestEntityAttr"
             nestedEntityView="_local"
             parentEntityInstanceId={
               this.props.entityId !== Datatypes3Management.NEW_SUBPATH
@@ -175,7 +175,7 @@ class Datatypes3EditComponent extends React.Component<
 
           <Field
             entityName={DatatypesTestEntity3.NAME}
-            stringPath="stringIdTestEntityAttr"
+            propertyName="stringIdTestEntityAttr"
             nestedEntityView="_local"
             parentEntityInstanceId={
               this.props.entityId !== Datatypes3Management.NEW_SUBPATH
@@ -189,7 +189,7 @@ class Datatypes3EditComponent extends React.Component<
 
           <Field
             entityName={DatatypesTestEntity3.NAME}
-            stringPath="weirdStringIdTestEntityAttr"
+            propertyName="weirdStringIdTestEntityAttr"
             nestedEntityView="_local"
             parentEntityInstanceId={
               this.props.entityId !== Datatypes3Management.NEW_SUBPATH

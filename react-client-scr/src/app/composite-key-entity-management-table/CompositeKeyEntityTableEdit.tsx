@@ -2,7 +2,7 @@ import * as React from "react";
 import { Form, Alert, Button, Card, message } from "antd";
 import { FormInstance } from "antd/es/form";
 import { observer } from "mobx-react";
-import { StringIdMgtCardsManagement } from "./StringIdMgtCardsManagement";
+import { CompositeKeyEntityManagement1 } from "./CompositeKeyEntityManagement1";
 import { Link, Redirect } from "react-router-dom";
 import { IReactionDisposer, observable, reaction, toJS } from "mobx";
 import {
@@ -25,7 +25,7 @@ import { Field, MultilineText, Spinner } from "@cuba-platform/react-ui";
 
 import "../../app/App.css";
 
-import { StringIdTestEntity } from "../../cuba/entities/scr_StringIdTestEntity";
+import { CompositeKeyEntity } from "../../cuba/entities/scr_CompositeKeyEntity";
 
 type Props = EditorProps & MainStoreInjected;
 
@@ -35,20 +35,19 @@ type EditorProps = {
 
 @injectMainStore
 @observer
-class StringIdMgtCardsEditComponent extends React.Component<
+class CompositeKeyEntityTableEditComponent extends React.Component<
   Props & WrappedComponentProps
 > {
-  dataInstance = instance<StringIdTestEntity>(StringIdTestEntity.NAME, {
+  dataInstance = instance<CompositeKeyEntity>(CompositeKeyEntity.NAME, {
     view: "_local",
-    loadImmediately: false,
-    stringIdName: "identifier"
+    loadImmediately: false
   });
 
   @observable updated = false;
   @observable formRef: React.RefObject<FormInstance> = React.createRef();
   reactionDisposers: IReactionDisposer[] = [];
 
-  fields = ["description", "identifier", "productCode"];
+  fields = ["testfld"];
 
   @observable globalErrors: string[] = [];
 
@@ -80,12 +79,12 @@ class StringIdMgtCardsEditComponent extends React.Component<
   };
 
   isNewEntity = () => {
-    return this.props.entityId === StringIdMgtCardsManagement.NEW_SUBPATH;
+    return this.props.entityId === CompositeKeyEntityManagement1.NEW_SUBPATH;
   };
 
   render() {
     if (this.updated) {
-      return <Redirect to={StringIdMgtCardsManagement.PATH} />;
+      return <Redirect to={CompositeKeyEntityManagement1.PATH} />;
     }
 
     const { status, lastError, load } = this.dataInstance;
@@ -118,26 +117,8 @@ class StringIdMgtCardsEditComponent extends React.Component<
           validateMessages={createAntdFormValidationMessages(intl)}
         >
           <Field
-            entityName={StringIdTestEntity.NAME}
-            propertyName="description"
-            formItemProps={{
-              style: { marginBottom: "12px" }
-            }}
-          />
-
-          <Field
-            entityName={StringIdTestEntity.NAME}
-            propertyName="identifier"
-            disabled={!this.isNewEntity()}
-            formItemProps={{
-              style: { marginBottom: "12px" },
-              rules: [{ required: true }]
-            }}
-          />
-
-          <Field
-            entityName={StringIdTestEntity.NAME}
-            propertyName="productCode"
+            entityName={CompositeKeyEntity.NAME}
+            propertyName="testfld"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}
@@ -152,7 +133,7 @@ class StringIdMgtCardsEditComponent extends React.Component<
           )}
 
           <Form.Item style={{ textAlign: "center" }}>
-            <Link to={StringIdMgtCardsManagement.PATH}>
+            <Link to={CompositeKeyEntityManagement1.PATH}>
               <Button htmlType="button">
                 <FormattedMessage id="common.cancel" />
               </Button>
@@ -174,7 +155,7 @@ class StringIdMgtCardsEditComponent extends React.Component<
 
   componentDidMount() {
     if (this.isNewEntity()) {
-      this.dataInstance.setItem(new StringIdTestEntity());
+      this.dataInstance.setItem(new CompositeKeyEntity());
     } else {
       this.dataInstance.load(this.props.entityId);
     }
@@ -225,4 +206,4 @@ class StringIdMgtCardsEditComponent extends React.Component<
   }
 }
 
-export default injectIntl(StringIdMgtCardsEditComponent);
+export default injectIntl(CompositeKeyEntityTableEditComponent);

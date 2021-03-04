@@ -18,9 +18,9 @@ import {
   Spinner
 } from "@cuba-platform/react-ui";
 
-import { WeirdStringIdTestEntity } from "../../cuba/entities/scr_WeirdStringIdTestEntity";
+import { CompositeKeyEntity } from "../../cuba/entities/scr_CompositeKeyEntity";
 import { SerializedEntity, getStringId } from "@cuba-platform/rest";
-import { WeirdStringIdMgtCardsManagement } from "./WeirdStringIdMgtCardsManagement";
+import { CompositeKeyEntityManagement3 } from "./CompositeKeyEntityManagement3";
 import {
   FormattedMessage,
   injectIntl,
@@ -35,20 +35,14 @@ type Props = MainStoreInjected &
   };
 @injectMainStore
 @observer
-class WeirdStringIdMgtCardsBrowseComponent extends React.Component<Props> {
-  dataCollection = collection<WeirdStringIdTestEntity>(
-    WeirdStringIdTestEntity.NAME,
-    {
-      view: "_local",
-      sort: "-updateTs",
-      loadImmediately: false,
-
-      stringIdName: "identifier"
-    }
-  );
+class CompositeKeyEntityCardsComponent extends React.Component<Props> {
+  dataCollection = collection<CompositeKeyEntity>(CompositeKeyEntity.NAME, {
+    view: "_local",
+    loadImmediately: false
+  });
 
   reactionDisposers: IReactionDisposer[] = [];
-  fields = ["description", "id", "identifier"];
+  fields = ["testfld"];
 
   componentDidMount(): void {
     this.reactionDisposers.push(
@@ -77,7 +71,7 @@ class WeirdStringIdMgtCardsBrowseComponent extends React.Component<Props> {
     this.reactionDisposers.forEach(dispose => dispose());
   }
 
-  showDeletionDialog = (e: SerializedEntity<WeirdStringIdTestEntity>) => {
+  showDeletionDialog = (e: SerializedEntity<CompositeKeyEntity>) => {
     Modal.confirm({
       title: this.props.intl.formatMessage(
         { id: "management.browser.delete.areYouSure" },
@@ -104,15 +98,15 @@ class WeirdStringIdMgtCardsBrowseComponent extends React.Component<Props> {
     return (
       <div className="narrow-layout">
         <EntityPermAccessControl
-          entityName={WeirdStringIdTestEntity.NAME}
+          entityName={CompositeKeyEntity.NAME}
           operation="create"
         >
           <div style={{ marginBottom: "12px" }}>
             <Link
               to={
-                WeirdStringIdMgtCardsManagement.PATH +
+                CompositeKeyEntityManagement3.PATH +
                 "/" +
-                WeirdStringIdMgtCardsManagement.NEW_SUBPATH
+                CompositeKeyEntityManagement3.NEW_SUBPATH
               }
             >
               <Button htmlType="button" type="primary" icon={<PlusOutlined />}>
@@ -141,9 +135,7 @@ class WeirdStringIdMgtCardsBrowseComponent extends React.Component<Props> {
               />,
               <Link
                 to={
-                  WeirdStringIdMgtCardsManagement.PATH +
-                  "/" +
-                  getStringId(e.id!)
+                  CompositeKeyEntityManagement3.PATH + "/" + getStringId(e.id!)
                 }
                 key="edit"
               >
@@ -153,7 +145,7 @@ class WeirdStringIdMgtCardsBrowseComponent extends React.Component<Props> {
           >
             {this.fields.map(p => (
               <EntityProperty
-                entityName={WeirdStringIdTestEntity.NAME}
+                entityName={CompositeKeyEntity.NAME}
                 propertyName={p}
                 value={e[p]}
                 key={p}
@@ -176,8 +168,6 @@ class WeirdStringIdMgtCardsBrowseComponent extends React.Component<Props> {
   }
 }
 
-const WeirdStringIdMgtCardsBrowse = injectIntl(
-  WeirdStringIdMgtCardsBrowseComponent
-);
+const CompositeKeyEntityCards = injectIntl(CompositeKeyEntityCardsComponent);
 
-export default WeirdStringIdMgtCardsBrowse;
+export default CompositeKeyEntityCards;
