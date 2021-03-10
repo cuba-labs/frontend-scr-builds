@@ -19,7 +19,7 @@ import {
 } from "@cuba-platform/react-ui";
 
 import { WeirdStringIdTestEntity } from "../../cuba/entities/scr_WeirdStringIdTestEntity";
-import { SerializedEntity } from "@cuba-platform/rest";
+import { SerializedEntity, getStringId } from "@cuba-platform/rest";
 import { WeirdStringIdMgtCardsManagement } from "./WeirdStringIdMgtCardsManagement";
 import {
   FormattedMessage,
@@ -132,7 +132,7 @@ class WeirdStringIdMgtCardsBrowseComponent extends React.Component<Props> {
         {items.map(e => (
           <Card
             title={e._instanceName}
-            key={e.id ? e.id : undefined}
+            key={e.id ? getStringId(e.id) : undefined}
             style={{ marginBottom: "12px" }}
             actions={[
               <DeleteOutlined
@@ -140,7 +140,11 @@ class WeirdStringIdMgtCardsBrowseComponent extends React.Component<Props> {
                 onClick={() => this.showDeletionDialog(e)}
               />,
               <Link
-                to={WeirdStringIdMgtCardsManagement.PATH + "/" + e.id}
+                to={
+                  WeirdStringIdMgtCardsManagement.PATH +
+                  "/" +
+                  getStringId(e.id!)
+                }
                 key="edit"
               >
                 <EditOutlined />

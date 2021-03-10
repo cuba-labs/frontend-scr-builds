@@ -19,7 +19,7 @@ import {
 } from "@cuba-platform/react-ui";
 
 import { WeirdStringIdTestEntity } from "../../cuba/entities/scr_WeirdStringIdTestEntity";
-import { SerializedEntity } from "@cuba-platform/rest";
+import { SerializedEntity, getStringId } from "@cuba-platform/rest";
 import { WeirdStringIdMgtListManagement } from "./WeirdStringIdMgtListManagement";
 import {
   FormattedMessage,
@@ -137,7 +137,11 @@ class WeirdStringIdMgtListBrowseComponent extends React.Component<Props> {
                   onClick={() => this.showDeletionDialog(item)}
                 />,
                 <Link
-                  to={WeirdStringIdMgtListManagement.PATH + "/" + item.id}
+                  to={
+                    WeirdStringIdMgtListManagement.PATH +
+                    "/" +
+                    getStringId(item.id!)
+                  }
                   key="edit"
                 >
                   <EditOutlined />

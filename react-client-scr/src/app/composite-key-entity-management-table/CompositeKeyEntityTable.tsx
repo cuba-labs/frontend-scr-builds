@@ -14,8 +14,8 @@ import {
 import { DataTable, Spinner } from "@cuba-platform/react-ui";
 
 import { CompositeKeyEntity } from "../../cuba/entities/scr_CompositeKeyEntity";
-import { SerializedEntity } from "@cuba-platform/rest";
-import { CompositeKeyEntityManagement } from "./CompositeKeyEntityManagement";
+import { SerializedEntity, getStringId } from "@cuba-platform/rest";
+import { CompositeKeyEntityManagement1 } from "./CompositeKeyEntityManagement1";
 import {
   FormattedMessage,
   injectIntl,
@@ -62,9 +62,9 @@ class CompositeKeyEntityTableComponent extends React.Component<
       >
         <Link
           to={
-            CompositeKeyEntityManagement.PATH +
+            CompositeKeyEntityManagement1.PATH +
             "/" +
-            CompositeKeyEntityManagement.NEW_SUBPATH
+            CompositeKeyEntityManagement1.NEW_SUBPATH
           }
         >
           <Button
@@ -85,7 +85,7 @@ class CompositeKeyEntityTableComponent extends React.Component<
         key="update"
       >
         <Link
-          to={CompositeKeyEntityManagement.PATH + "/" + this.selectedRowKey}
+          to={CompositeKeyEntityManagement1.PATH + "/" + this.selectedRowKey}
         >
           <Button
             htmlType="button"
@@ -128,7 +128,9 @@ class CompositeKeyEntityTableComponent extends React.Component<
   getRecordById(id: string): SerializedEntity<CompositeKeyEntity> {
     const record:
       | SerializedEntity<CompositeKeyEntity>
-      | undefined = this.dataCollection.items.find(record => record.id === id);
+      | undefined = this.dataCollection.items.find(
+      record => getStringId(record.id!) === id
+    );
 
     if (!record) {
       throw new Error("Cannot find entity with id " + id);
