@@ -19,7 +19,7 @@ import {
 } from "@cuba-platform/react-ui";
 
 import { IntegerIdTestEntity } from "../../cuba/entities/scr_IntegerIdTestEntity";
-import { SerializedEntity, getStringId } from "@cuba-platform/rest";
+import { SerializedEntity } from "@cuba-platform/rest";
 import { IntIdManagementList } from "./IntIdManagementList";
 import {
   FormattedMessage,
@@ -129,10 +129,7 @@ class IntIdMgtListBrowseComponent extends React.Component<Props> {
                   key="delete"
                   onClick={() => this.showDeletionDialog(item)}
                 />,
-                <Link
-                  to={IntIdManagementList.PATH + "/" + getStringId(item.id!)}
-                  key="edit"
-                >
+                <Link to={IntIdManagementList.PATH + "/" + item.id} key="edit">
                   <EditOutlined />
                 </Link>
               ]}

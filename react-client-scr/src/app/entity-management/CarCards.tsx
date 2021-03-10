@@ -19,7 +19,7 @@ import {
 } from "@cuba-platform/react-ui";
 
 import { Car } from "../../cuba/entities/scr$Car";
-import { SerializedEntity, getStringId } from "@cuba-platform/rest";
+import { SerializedEntity } from "@cuba-platform/rest";
 import { CarManagement } from "./CarManagement";
 import {
   FormattedMessage,
@@ -133,17 +133,14 @@ class CarCardsComponent extends React.Component<Props> {
         {items.map(e => (
           <Card
             title={e._instanceName}
-            key={e.id ? getStringId(e.id) : undefined}
+            key={e.id ? e.id : undefined}
             style={{ marginBottom: "12px" }}
             actions={[
               <DeleteOutlined
                 key="delete"
                 onClick={() => this.showDeletionDialog(e)}
               />,
-              <Link
-                to={CarManagement.PATH + "/" + getStringId(e.id!)}
-                key="edit"
-              >
+              <Link to={CarManagement.PATH + "/" + e.id} key="edit">
                 <EditOutlined />
               </Link>
             ]}

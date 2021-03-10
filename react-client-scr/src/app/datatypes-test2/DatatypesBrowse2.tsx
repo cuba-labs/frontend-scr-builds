@@ -19,7 +19,7 @@ import {
 } from "@cuba-platform/react-ui";
 
 import { DatatypesTestEntity } from "../../cuba/entities/scr_DatatypesTestEntity";
-import { SerializedEntity, getStringId } from "@cuba-platform/rest";
+import { SerializedEntity } from "@cuba-platform/rest";
 import { DatatypesManagement2 } from "./DatatypesManagement2";
 import {
   FormattedMessage,
@@ -156,10 +156,7 @@ class DatatypesBrowse2Component extends React.Component<Props> {
                   key="delete"
                   onClick={() => this.showDeletionDialog(item)}
                 />,
-                <Link
-                  to={DatatypesManagement2.PATH + "/" + getStringId(item.id!)}
-                  key="edit"
-                >
+                <Link to={DatatypesManagement2.PATH + "/" + item.id} key="edit">
                   <EditOutlined />
                 </Link>
               ]}

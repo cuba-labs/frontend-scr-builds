@@ -14,7 +14,7 @@ import {
 import { DataTable, Spinner } from "@cuba-platform/react-ui";
 
 import { DatatypesTestEntity } from "../../cuba/entities/scr_DatatypesTestEntity";
-import { SerializedEntity, getStringId } from "@cuba-platform/rest";
+import { SerializedEntity } from "@cuba-platform/rest";
 import { DatatypesManagement3 } from "./DatatypesManagement3";
 import {
   FormattedMessage,
@@ -150,9 +150,7 @@ class DatatypesBrowse3Component extends React.Component<
   getRecordById(id: string): SerializedEntity<DatatypesTestEntity> {
     const record:
       | SerializedEntity<DatatypesTestEntity>
-      | undefined = this.dataCollection.items.find(
-      record => getStringId(record.id!) === id
-    );
+      | undefined = this.dataCollection.items.find(record => record.id === id);
 
     if (!record) {
       throw new Error("Cannot find entity with id " + id);

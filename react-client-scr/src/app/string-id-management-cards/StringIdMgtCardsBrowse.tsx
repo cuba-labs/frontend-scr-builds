@@ -19,7 +19,7 @@ import {
 } from "@cuba-platform/react-ui";
 
 import { StringIdTestEntity } from "../../cuba/entities/scr_StringIdTestEntity";
-import { SerializedEntity, getStringId } from "@cuba-platform/rest";
+import { SerializedEntity } from "@cuba-platform/rest";
 import { StringIdMgtCardsManagement } from "./StringIdMgtCardsManagement";
 import {
   FormattedMessage,
@@ -129,7 +129,7 @@ class StringIdMgtCardsBrowseComponent extends React.Component<Props> {
         {items.map(e => (
           <Card
             title={e._instanceName}
-            key={e.id ? getStringId(e.id) : undefined}
+            key={e.id ? e.id : undefined}
             style={{ marginBottom: "12px" }}
             actions={[
               <DeleteOutlined
@@ -137,7 +137,7 @@ class StringIdMgtCardsBrowseComponent extends React.Component<Props> {
                 onClick={() => this.showDeletionDialog(e)}
               />,
               <Link
-                to={StringIdMgtCardsManagement.PATH + "/" + getStringId(e.id!)}
+                to={StringIdMgtCardsManagement.PATH + "/" + e.id}
                 key="edit"
               >
                 <EditOutlined />

@@ -118,7 +118,7 @@ class CompositeKeyEntityEditComponent extends React.Component<
         >
           <Field
             entityName={CompositeKeyEntity.NAME}
-            stringPath="testfld"
+            propertyName="testfld"
             formItemProps={{
               style: { marginBottom: "12px" }
             }}

@@ -14,7 +14,7 @@ import {
 import { DataTable, Spinner } from "@cuba-platform/react-ui";
 
 import { BoringStringIdTestEntity } from "../../cuba/entities/scr_BoringStringIdTestEntity";
-import { SerializedEntity, getStringId } from "@cuba-platform/rest";
+import { SerializedEntity } from "@cuba-platform/rest";
 import { BoringStringIdManagementTable } from "./BoringStringIdManagementTable";
 import {
   FormattedMessage,
@@ -134,9 +134,7 @@ class BoringStringIdMgtTableBrowseComponent extends React.Component<
   getRecordById(id: string): SerializedEntity<BoringStringIdTestEntity> {
     const record:
       | SerializedEntity<BoringStringIdTestEntity>
-      | undefined = this.dataCollection.items.find(
-      record => getStringId(record.id!) === id
-    );
+      | undefined = this.dataCollection.items.find(record => record.id === id);
 
     if (!record) {
       throw new Error("Cannot find entity with id " + id);

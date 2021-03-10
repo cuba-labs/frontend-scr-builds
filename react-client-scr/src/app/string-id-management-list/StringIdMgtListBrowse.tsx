@@ -19,7 +19,7 @@ import {
 } from "@cuba-platform/react-ui";
 
 import { StringIdTestEntity } from "../../cuba/entities/scr_StringIdTestEntity";
-import { SerializedEntity, getStringId } from "@cuba-platform/rest";
+import { SerializedEntity } from "@cuba-platform/rest";
 import { StringIdMgtListManagement } from "./StringIdMgtListManagement";
 import {
   FormattedMessage,
@@ -134,9 +134,7 @@ class StringIdMgtListBrowseComponent extends React.Component<Props> {
                   onClick={() => this.showDeletionDialog(item)}
                 />,
                 <Link
-                  to={
-                    StringIdMgtListManagement.PATH + "/" + getStringId(item.id!)
-                  }
+                  to={StringIdMgtListManagement.PATH + "/" + item.id}
                   key="edit"
                 >
                   <EditOutlined />

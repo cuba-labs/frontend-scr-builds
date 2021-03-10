@@ -19,7 +19,7 @@ import {
 } from "@cuba-platform/react-ui";
 
 import { DatatypesTestEntity } from "../../cuba/entities/scr_DatatypesTestEntity";
-import { SerializedEntity, getStringId } from "@cuba-platform/rest";
+import { SerializedEntity } from "@cuba-platform/rest";
 import { DatatypesManagement1 } from "./DatatypesManagement1";
 import {
   FormattedMessage,
@@ -152,17 +152,14 @@ class DatatypesBrowse1Component extends React.Component<Props> {
         {items.map(e => (
           <Card
             title={e._instanceName}
-            key={e.id ? getStringId(e.id) : undefined}
+            key={e.id ? e.id : undefined}
             style={{ marginBottom: "12px" }}
             actions={[
               <DeleteOutlined
                 key="delete"
                 onClick={() => this.showDeletionDialog(e)}
               />,
-              <Link
-                to={DatatypesManagement1.PATH + "/" + getStringId(e.id!)}
-                key="edit"
-              >
+              <Link to={DatatypesManagement1.PATH + "/" + e.id} key="edit">
                 <EditOutlined />
               </Link>
             ]}

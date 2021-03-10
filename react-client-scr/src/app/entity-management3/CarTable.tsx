@@ -14,7 +14,7 @@ import {
 import { DataTable, Spinner } from "@cuba-platform/react-ui";
 
 import { Car } from "../../cuba/entities/scr$Car";
-import { SerializedEntity, getStringId } from "@cuba-platform/rest";
+import { SerializedEntity } from "@cuba-platform/rest";
 import { CarManagement3 } from "./CarManagement3";
 import {
   FormattedMessage,
@@ -136,9 +136,7 @@ class CarTableComponent extends React.Component<
   getRecordById(id: string): SerializedEntity<Car> {
     const record:
       | SerializedEntity<Car>
-      | undefined = this.dataCollection.items.find(
-      record => getStringId(record.id!) === id
-    );
+      | undefined = this.dataCollection.items.find(record => record.id === id);
 
     if (!record) {
       throw new Error("Cannot find entity with id " + id);

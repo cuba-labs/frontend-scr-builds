@@ -14,7 +14,7 @@ import {
 import { DataTable, Spinner } from "@cuba-platform/react-ui";
 
 import { CompositionO2OTestEntity } from "../../cuba/entities/scr_CompositionO2OTestEntity";
-import { SerializedEntity, getStringId } from "@cuba-platform/rest";
+import { SerializedEntity } from "@cuba-platform/rest";
 import { CompositionO2OManagement } from "./CompositionO2OManagement";
 import {
   FormattedMessage,
@@ -130,9 +130,7 @@ class CompositionO2OBrowseComponent extends React.Component<
   getRecordById(id: string): SerializedEntity<CompositionO2OTestEntity> {
     const record:
       | SerializedEntity<CompositionO2OTestEntity>
-      | undefined = this.dataCollection.items.find(
-      record => getStringId(record.id!) === id
-    );
+      | undefined = this.dataCollection.items.find(record => record.id === id);
 
     if (!record) {
       throw new Error("Cannot find entity with id " + id);
