@@ -4,7 +4,6 @@
   "management.browser.noItems": "Aucune donnée",
   "management.editor.validationError": "Erreur de validation. Veuillez vérifier votre saisie.",
   "management.editor.success": "L'entité a été mise à jour",
-  "management.editor.error": "Erreur",
   "common.alt.logo": "Logo",
   "common.ok": "OK",
   "common.cancel": "Annuler",
