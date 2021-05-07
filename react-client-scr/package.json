@@ -4,9 +4,9 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.0.0",
-    "@cuba-platform/react-core": "file:../packages/cuba-react-core/cuba-platform-react-core-2.0.0.tgz",
-    "@cuba-platform/react-ui": "file:../packages/cuba-react-ui/cuba-platform-react-ui-2.0.0.tgz",
-    "@cuba-platform/rest": "file:../packages/cuba-rest-js/cuba-platform-rest-2.0.0.tgz",
+    "@cuba-platform/react-core": "file:../packages/cuba-react-core/cuba-platform-react-core-2.1.0.tgz",
+    "@cuba-platform/react-ui": "file:../packages/cuba-react-ui/cuba-platform-react-ui-2.1.0.tgz",
+    "@cuba-platform/rest": "file:../packages/cuba-rest-js/cuba-platform-rest-2.1.0.tgz",
     "antd": "^4.0.0",
     "mobx": "^4.13.0",
     "mobx-react": "^6.3.0",
